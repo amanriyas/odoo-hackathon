@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top level menu (no group so everyone sees it) -->
+    <menuitem id="menu_carbon_root"
+              name="Carbon Footprint"
+              sequence="10"/>
+
+    <!-- Submenus -->
+    <menuitem id="menu_carbon_activity"
+              name="Activities"
+              parent="menu_carbon_root"
+              action="action_carbon_activity"
+              sequence="10"/>
+
+    <menuitem id="menu_carbon_emission_factor"
+              name="Emission Factors"
+              parent="menu_carbon_root"
+              action="action_carbon_emission_factor"
+              sequence="20"/>
+
+    <menuitem id="menu_carbon_project"
+              name="Projects"
+              parent="menu_carbon_root"
+              action="action_carbon_project"
+              sequence="30"/>
+</odoo>

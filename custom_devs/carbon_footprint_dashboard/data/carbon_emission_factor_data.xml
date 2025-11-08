@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="carbon_factor_electricity" model="carbon.emission.factor">
+        <field name="name">Electricity (grid)</field>
+        <field name="category">Electricity</field>
+        <field name="unit_of_measure">kWh</field>
+        <field name="factor">0.5</field>
+    </record>
+    <record id="carbon_factor_car_travel" model="carbon.emission.factor">
+        <field name="name">Car travel</field>
+        <field name="category">Transport</field>
+        <field name="unit_of_measure">km</field>
+        <field name="factor">0.12</field>
+    </record>
+</odoo>

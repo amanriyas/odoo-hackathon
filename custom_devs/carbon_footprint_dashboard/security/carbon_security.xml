@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Basic user group -->
+    <record id="group_carbon_user" model="res.groups">
+        <field name="name">Carbon Footprint User</field>
+    </record>
+
+    <!-- Manager group -->
+    <record id="group_carbon_manager" model="res.groups">
+        <field name="name">Carbon Footprint Manager</field>
+        <field name="implied_ids" eval="[(4, ref('group_carbon_user'))]"/>
+    </record>
+</odoo>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_carbon_project_list" model="ir.ui.view">
+        <field name="name">carbon.project.list</field>
+        <field name="model">carbon.project</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="target_reduction"/>
+                <field name="achieved_reduction"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_carbon_project_form" model="ir.ui.view">
+        <field name="name">carbon.project.form</field>
+        <field name="model">carbon.project</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="target_reduction"/>
+                        <field name="achieved_reduction"/>
+                    </group>
+                    <notebook>
+                        <page string="Activities">
+                            <field name="activity_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="activity_date"/>
+                                    <field name="quantity"/>
+                                    <field name="emission_factor_id"/>
+                                    <field name="emission_amount" readonly="1"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_carbon_project" model="ir.actions.act_window">
+        <field name="name">Projects</field>
+        <field name="res_model">carbon.project</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

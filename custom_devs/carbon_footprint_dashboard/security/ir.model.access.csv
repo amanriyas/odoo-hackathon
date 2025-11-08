@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+carbon_emission_factor_all,carbon_emission_factor_all,model_carbon_emission_factor,,1,1,1,1
+carbon_activity_all,carbon_activity_all,model_carbon_activity,,1,1,1,1
+carbon_project_all,carbon_project_all,model_carbon_project,,1,1,1,1
