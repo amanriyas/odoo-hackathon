@@ -1,0 +1,83 @@
+<odoo>
+    <record id="view_carbon_initiative_tree" model="ir.ui.view">
+        <field name="name">carbon.initiative.tree</field>
+        <field name="model">carbon.initiative</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="category"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="state"/>
+                <field name="target_co2_reduction"/>
+                <field name="actual_co2_reduction"/>
+                <field name="progress_percentage"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_carbon_initiative_form" model="ir.ui.view">
+        <field name="name">carbon.initiative.form</field>
+        <field name="model">carbon.initiative</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="category"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="state"/>
+                        <field name="target_co2_reduction"/>
+                        <field name="actual_co2_reduction"/>
+                        <field name="progress_percentage"/>
+                    </group>
+                    <notebook>
+                        <page string="Activities">
+                            <field name="activity_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="activity_type"/>
+                                    <field name="co2_generated"/>
+                                    <field name="co2_saved"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Goals">
+                            <field name="goal_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="target_date"/>
+                                    <field name="target_co2_reduction"/>
+                                    <field name="actual_co2_reduction"/>
+                                    <field name="achievement_percentage"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_carbon_initiative_kanban" model="ir.ui.view">
+        <field name="name">carbon.initiative.kanban</field>
+        <field name="model">carbon.initiative</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <strong><field name="name"/></strong>
+                            <div><field name="category"/></div>
+                            <div><field name="state"/></div>
+                            <div>Progress: <field name="progress_percentage"/>%</div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>
