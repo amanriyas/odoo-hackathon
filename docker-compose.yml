@@ -1,0 +1,57 @@
+services:
+  # PostgreSQL Database
+  db:
+    image: postgres:16
+    container_name: odoo_postgres
+    environment:
+      - POSTGRES_DB=odoo
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=12345
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    networks:
+      - odoo-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U odoo"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Odoo Application
+  odoo:
+    image: odoo:19.0
+    container_name: odoo_app
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - HOST=db
+      - PORT=5432
+      - USER=odoo
+      - PASSWORD=12345
+    volumes:
+      # Mount custom addons directory
+      - ./custom_devs:/mnt/extra-addons
+      # Persist Odoo data
+      - odoo-web-data:/var/lib/odoo
+    ports:
+      - "8069:8069"
+      - "8072:8072"  # For longpolling/real-time updates
+    networks:
+      - odoo-network
+    restart: unless-stopped
+    command: -- --dev=all -d odoo --db_host=db --db_port=5432 --db_user=odoo --db_password=12345 --addons-path=/mnt/extra-addons,/usr/lib/python3/dist-packages/odoo/addons --init=base,student_management --without-demo=False
+
+volumes:
+  odoo-db-data:
+    driver: local
+  odoo-web-data:
+    driver: local
+
+networks:
+  odoo-network:
+    driver: bridge

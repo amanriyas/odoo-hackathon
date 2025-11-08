@@ -1,0 +1,30 @@
+{
+"version": "0.2.0",
+"configurations": [
+{
+"name": "code",
+"type": "debugpy",
+"request": "launch",
+"cwd": "C:\\Users\\amana\\OneDrive\\Desktop\\odoo-hackathon\\please-download-this\\odoo",
+"python": "${workspaceFolder}\\odoo_venv\\Scripts\\python.exe",
+"program": "./odoo-bin",
+"args": [
+// "shell",
+"-c", "../.vscode/odoo.cfg",
+"--log-handler",
+"odoo.addons.base.models.ir_attachment:WARNING", 
+
+// Database Name 
+"-d", "testingmylimit5",
+// Module Name 
+"-u", "student_management", 
+"--with-demo",
+"--limit-time-real", "0",
+"--limit-time-cpu", "0",
+"--max-cron-threads", "0",/* */
+"--dev=reload,qweb,xml",
+],
+"console": "integratedTerminal"
+},
+]
+}
