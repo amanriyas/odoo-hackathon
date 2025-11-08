@@ -48,7 +48,9 @@
         'views/carbon_goal_views.xml',
         'views/menu.xml',
     ],
-    'demo': [],
+    'demo': [
+        'data/demo_data.xml',
+    ],
     'images': ['static/description/icon.png'],
     'installable': True,
     'application': True,

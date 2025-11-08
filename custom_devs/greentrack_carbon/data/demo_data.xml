@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ============================================ -->
+    <!-- CARBON INITIATIVES - Environmental Programs -->
+    <!-- ============================================ -->
+    
+    <!-- Initiative 1: Paperless Office Challenge -->
+    <record id="initiative_paperless" model="carbon.initiative">
+        <field name="name">Paperless Office Challenge 2025</field>
+        <field name="description">Digital-first initiative to reduce paper consumption across all departments. Goals include implementing e-signatures, cloud storage, and digital workflows.</field>
+        <field name="category">waste</field>
+        <field name="start_date">2025-01-01</field>
+        <field name="end_date">2025-12-31</field>
+        <field name="state">active</field>
+        <field name="target_co2_reduction">1000</field>
+        <field name="color">3</field>
+    </record>
+
+    <!-- Initiative 2: Solar Energy Installation -->
+    <record id="initiative_solar" model="carbon.initiative">
+        <field name="name">Solar Panel Installation Project</field>
+        <field name="description">Installing 500kW solar panels on office rooftops to reduce grid electricity dependency and carbon emissions.</field>
+        <field name="category">energy</field>
+        <field name="start_date">2025-02-01</field>
+        <field name="end_date">2025-06-30</field>
+        <field name="state">active</field>
+        <field name="target_co2_reduction">5000</field>
+        <field name="color">5</field>
+    </record>
+
+    <!-- Initiative 3: Sustainable Transport -->
+    <record id="initiative_transport" model="carbon.initiative">
+        <field name="name">Green Commute Program</field>
+        <field name="description">Encouraging carpooling, electric vehicles, and public transport usage among employees. Includes EV charging stations and carpool incentives.</field>
+        <field name="category">transport</field>
+        <field name="start_date">2025-01-15</field>
+        <field name="end_date">2025-12-31</field>
+        <field name="state">active</field>
+        <field name="target_co2_reduction">3000</field>
+        <field name="color">2</field>
+    </record>
+
+    <!-- Initiative 4: Waste Reduction -->
+    <record id="initiative_waste" model="carbon.initiative">
+        <field name="name">Zero Waste Office Initiative</field>
+        <field name="description">Comprehensive waste reduction program including recycling stations, composting, and eliminating single-use plastics.</field>
+        <field name="category">waste</field>
+        <field name="start_date">2024-10-01</field>
+        <field name="end_date">2025-09-30</field>
+        <field name="state">active</field>
+        <field name="target_co2_reduction">2000</field>
+        <field name="color">1</field>
+    </record>
+
+    <!-- Initiative 5: Water Conservation -->
+    <record id="initiative_water" model="carbon.initiative">
+        <field name="name">Smart Water Management System</field>
+        <field name="description">Installing smart water meters, low-flow fixtures, and rainwater harvesting systems to reduce water consumption and treatment emissions.</field>
+        <field name="category">water</field>
+        <field name="start_date">2025-03-01</field>
+        <field name="end_date">2025-08-31</field>
+        <field name="state">active</field>
+        <field name="target_co2_reduction">500</field>
+        <field name="color">4</field>
+    </record>
+
+    <!-- Initiative 6: Green Office Design (Completed) -->
+    <record id="initiative_green_office" model="carbon.initiative">
+        <field name="name">LED Lighting Retrofit 2024</field>
+        <field name="description">Complete replacement of traditional lighting with energy-efficient LED systems across all facilities.</field>
+        <field name="category">energy</field>
+        <field name="start_date">2024-06-01</field>
+        <field name="end_date">2024-12-31</field>
+        <field name="state">completed</field>
+        <field name="target_co2_reduction">1500</field>
+        <field name="color">6</field>
+    </record>
+
+    <!-- Initiative 7: Draft Initiative -->
+    <record id="initiative_draft" model="carbon.initiative">
+        <field name="name">Circular Economy Pilot Program</field>
+        <field name="description">Exploring circular economy principles for office equipment and supplies procurement.</field>
+        <field name="category">waste</field>
+        <field name="start_date">2025-07-01</field>
+        <field name="end_date">2025-12-31</field>
+        <field name="state">draft</field>
+        <field name="target_co2_reduction">800</field>
+        <field name="color">7</field>
+    </record>
+
+    <!-- ============================================ -->
+    <!-- CARBON ACTIVITIES - Emission/Reduction Events -->
+    <!-- ============================================ -->
+
+    <!-- Paperless Initiative Activities -->
+    <record id="activity_paper_01" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_paperless"/>
+        <field name="activity_type">paper</field>
+        <field name="activity_date">2025-01-05</field>
+        <field name="quantity">500</field>
+        <field name="unit">sheets</field>
+        <field name="emission_factor">0.01</field>
+        <field name="co2_saved">5</field>
+        <field name="source">manual</field>
+        <field name="notes">Switched to digital invoicing system</field>
+    </record>
+
+    <record id="activity_paper_02" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_paperless"/>
+        <field name="activity_type">paper</field>
+        <field name="activity_date">2025-01-15</field>
+        <field name="quantity">800</field>
+        <field name="unit">sheets</field>
+        <field name="emission_factor">0.01</field>
+        <field name="co2_saved">8</field>
+        <field name="source">manual</field>
+        <field name="notes">Digital HR onboarding implemented</field>
+    </record>
+
+    <record id="activity_paper_03" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_paperless"/>
+        <field name="activity_type">paper</field>
+        <field name="activity_date">2025-02-01</field>
+        <field name="quantity">1200</field>
+        <field name="unit">sheets</field>
+        <field name="emission_factor">0.01</field>
+        <field name="co2_saved">12</field>
+        <field name="source">manual</field>
+        <field name="notes">E-signature platform for contracts</field>
+    </record>
+
+    <record id="activity_paper_04" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_paperless"/>
+        <field name="activity_type">paper</field>
+        <field name="activity_date">2025-02-20</field>
+        <field name="quantity">950</field>
+        <field name="unit">sheets</field>
+        <field name="emission_factor">0.01</field>
+        <field name="co2_saved">9.5</field>
+        <field name="source">manual</field>
+        <field name="notes">Digital meeting notes and agendas</field>
+    </record>
+
+    <record id="activity_paper_05" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_paperless"/>
+        <field name="activity_type">paper</field>
+        <field name="activity_date">2025-03-10</field>
+        <field name="quantity">1500</field>
+        <field name="unit">sheets</field>
+        <field name="emission_factor">0.01</field>
+        <field name="co2_saved">15</field>
+        <field name="source">manual</field>
+        <field name="notes">Cloud-based document management</field>
+    </record>
+
+    <!-- Solar Energy Activities -->
+    <record id="activity_solar_01" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_solar"/>
+        <field name="activity_type">electricity</field>
+        <field name="activity_date">2025-02-15</field>
+        <field name="quantity">1500</field>
+        <field name="unit">kwh</field>
+        <field name="emission_factor">0.45</field>
+        <field name="co2_saved">675</field>
+        <field name="source">api</field>
+        <field name="notes">First week of solar panel operation</field>
+    </record>
+
+    <record id="activity_solar_02" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_solar"/>
+        <field name="activity_type">electricity</field>
+        <field name="activity_date">2025-03-01</field>
+        <field name="quantity">3200</field>
+        <field name="unit">kwh</field>
+        <field name="emission_factor">0.45</field>
+        <field name="co2_saved">1440</field>
+        <field name="source">api</field>
+        <field name="notes">Full month solar generation - March</field>
+    </record>
+
+    <record id="activity_solar_03" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_solar"/>
+        <field name="activity_type">electricity</field>
+        <field name="activity_date">2025-04-01</field>
+        <field name="quantity">3500</field>
+        <field name="unit">kwh</field>
+        <field name="emission_factor">0.45</field>
+        <field name="co2_saved">1575</field>
+        <field name="source">api</field>
+        <field name="notes">Solar generation - April (peak summer)</field>
+    </record>
+
+    <!-- Transport Activities -->
+    <record id="activity_transport_01" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_transport"/>
+        <field name="activity_type">travel</field>
+        <field name="activity_date">2025-01-20</field>
+        <field name="quantity">450</field>
+        <field name="unit">km</field>
+        <field name="emission_factor">0.12</field>
+        <field name="co2_saved">54</field>
+        <field name="source">manual</field>
+        <field name="notes">Carpool week 1 - 3 employees</field>
+    </record>
+
+    <record id="activity_transport_02" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_transport"/>
+        <field name="activity_type">travel</field>
+        <field name="activity_date">2025-02-05</field>
+        <field name="quantity">820</field>
+        <field name="unit">km</field>
+        <field name="emission_factor">0.12</field>
+        <field name="co2_saved">98.4</field>
+        <field name="source">manual</field>
+        <field name="notes">Carpool program expanding - 5 groups</field>
+    </record>
+
+    <record id="activity_transport_03" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_transport"/>
+        <field name="activity_type">fuel</field>
+        <field name="activity_date">2025-02-15</field>
+        <field name="quantity">150</field>
+        <field name="unit">liters</field>
+        <field name="emission_factor">2.31</field>
+        <field name="co2_saved">346.5</field>
+        <field name="source">manual</field>
+        <field name="notes">EV adoption - replaced fuel consumption</field>
+    </record>
+
+    <record id="activity_transport_04" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_transport"/>
+        <field name="activity_type">travel</field>
+        <field name="activity_date">2025-03-01</field>
+        <field name="quantity">1200</field>
+        <field name="unit">km</field>
+        <field name="emission_factor">0.12</field>
+        <field name="co2_saved">144</field>
+        <field name="source">manual</field>
+        <field name="notes">Metro pass program - 10 employees</field>
+    </record>
+
+    <record id="activity_transport_05" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_transport"/>
+        <field name="activity_type">fuel</field>
+        <field name="activity_date">2025-03-15</field>
+        <field name="quantity">200</field>
+        <field name="unit">liters</field>
+        <field name="emission_factor">2.31</field>
+        <field name="co2_saved">462</field>
+        <field name="source">manual</field>
+        <field name="notes">Company EV fleet - Month 1</field>
+    </record>
+
+    <!-- Waste Reduction Activities -->
+    <record id="activity_waste_01" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_waste"/>
+        <field name="activity_type">waste</field>
+        <field name="activity_date">2024-10-15</field>
+        <field name="quantity">85</field>
+        <field name="unit">kg</field>
+        <field name="emission_factor">0.5</field>
+        <field name="co2_saved">42.5</field>
+        <field name="source">manual</field>
+        <field name="notes">Recycling program launch - Week 1</field>
+    </record>
+
+    <record id="activity_waste_02" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_waste"/>
+        <field name="activity_type">waste</field>
+        <field name="activity_date">2024-11-01</field>
+        <field name="quantity">120</field>
+        <field name="unit">kg</field>
+        <field name="emission_factor">0.5</field>
+        <field name="co2_saved">60</field>
+        <field name="source">manual</field>
+        <field name="notes">Composting program - organic waste</field>
+    </record>
+
+    <record id="activity_waste_03" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_waste"/>
+        <field name="activity_type">waste</field>
+        <field name="activity_date">2024-12-01</field>
+        <field name="quantity">150</field>
+        <field name="unit">kg</field>
+        <field name="emission_factor">0.5</field>
+        <field name="co2_saved">75</field>
+        <field name="source">manual</field>
+        <field name="notes">Plastic elimination campaign</field>
+    </record>
+
+    <record id="activity_waste_04" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_waste"/>
+        <field name="activity_type">waste</field>
+        <field name="activity_date">2025-01-15</field>
+        <field name="quantity">180</field>
+        <field name="unit">kg</field>
+        <field name="emission_factor">0.5</field>
+        <field name="co2_saved">90</field>
+        <field name="source">manual</field>
+        <field name="notes">Q1 2025 - Full recycling adoption</field>
+    </record>
+
+    <record id="activity_waste_05" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_waste"/>
+        <field name="activity_type">waste</field>
+        <field name="activity_date">2025-02-15</field>
+        <field name="quantity">195</field>
+        <field name="unit">kg</field>
+        <field name="emission_factor">0.5</field>
+        <field name="co2_saved">97.5</field>
+        <field name="source">manual</field>
+        <field name="notes">Waste audit and optimization</field>
+    </record>
+
+    <!-- Water Conservation Activities -->
+    <record id="activity_water_01" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_water"/>
+        <field name="activity_type">water</field>
+        <field name="activity_date">2025-03-05</field>
+        <field name="quantity">5000</field>
+        <field name="unit">liters</field>
+        <field name="emission_factor">0.0003</field>
+        <field name="co2_saved">1.5</field>
+        <field name="source">api</field>
+        <field name="notes">Low-flow fixtures installation - Week 1</field>
+    </record>
+
+    <record id="activity_water_02" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_water"/>
+        <field name="activity_type">water</field>
+        <field name="activity_date">2025-03-15</field>
+        <field name="quantity">8000</field>
+        <field name="unit">liters</field>
+        <field name="emission_factor">0.0003</field>
+        <field name="co2_saved">2.4</field>
+        <field name="source">api</field>
+        <field name="notes">Smart meters tracking savings</field>
+    </record>
+
+    <record id="activity_water_03" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_water"/>
+        <field name="activity_type">water</field>
+        <field name="activity_date">2025-04-01</field>
+        <field name="quantity">12000</field>
+        <field name="unit">liters</field>
+        <field name="emission_factor">0.0003</field>
+        <field name="co2_saved">3.6</field>
+        <field name="source">api</field>
+        <field name="notes">Rainwater harvesting system active</field>
+    </record>
+
+    <!-- Completed Initiative (LED Lighting) Activities -->
+    <record id="activity_led_01" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_green_office"/>
+        <field name="activity_type">electricity</field>
+        <field name="activity_date">2024-07-01</field>
+        <field name="quantity">2000</field>
+        <field name="unit">kwh</field>
+        <field name="emission_factor">0.45</field>
+        <field name="co2_saved">900</field>
+        <field name="source">manual</field>
+        <field name="notes">First floor LED retrofit complete</field>
+    </record>
+
+    <record id="activity_led_02" model="carbon.activity">
+        <field name="initiative_id" ref="initiative_green_office"/>
+        <field name="activity_type">electricity</field>
+        <field name="activity_date">2024-09-01</field>
+        <field name="quantity">1800</field>
+        <field name="unit">kwh</field>
+        <field name="emission_factor">0.45</field>
+        <field name="co2_saved">810</field>
+        <field name="source">manual</field>
+        <field name="notes">All floors LED conversion complete</field>
+    </record>
+
+    <!-- ============================================ -->
+    <!-- CARBON GOALS - Milestones and Targets -->
+    <!-- ============================================ -->
+
+    <!-- Paperless Initiative Goals -->
+    <record id="goal_paperless_q1" model="carbon.goal">
+        <field name="initiative_id" ref="initiative_paperless"/>
+        <field name="name">Q1 2025 Paper Reduction Target</field>
+        <field name="description">Reduce paper usage by implementing digital workflows in HR and Finance departments.</field>
+        <field name="target_date">2025-03-31</field>
+        <field name="target_co2_reduction">40</field>
+        <field name="reward_points">500</field>
+    </record>
+
+    <record id="goal_paperless_q2" model="carbon.goal">
+        <field name="initiative_id" ref="initiative_paperless"/>
+        <field name="name">Q2 2025 Digital Transformation</field>
+        <field name="description">Expand e-signature and cloud storage to all departments.</field>
+        <field name="target_date">2025-06-30</field>
+        <field name="target_co2_reduction">100</field>
+        <field name="reward_points">750</field>
+    </record>
+
+    <record id="goal_paperless_year" model="carbon.goal">
+        <field name="initiative_id" ref="initiative_paperless"/>
+        <field name="name">Year-End Paperless Achievement</field>
+        <field name="description">Achieve 90% paperless operations across the organization.</field>
+        <field name="target_date">2025-12-31</field>
+        <field name="target_co2_reduction">1000</field>
+        <field name="reward_points">2000</field>
+    </record>
+
+    <!-- Solar Energy Goals -->
+    <record id="goal_solar_phase1" model="carbon.goal">
+        <field name="initiative_id" ref="initiative_solar"/>
+        <field name="name">Solar Phase 1 - Installation Complete</field>
+        <field name="description">Complete installation of 250kW solar capacity on Building A.</field>
+        <field name="target_date">2025-03-31</field>
+        <field name="target_co2_reduction">2000</field>
+        <field name="reward_points">1000</field>
+    </record>
+
+    <record id="goal_solar_phase2" model="carbon.goal">
+        <field name="initiative_id" ref="initiative_solar"/>
+        <field name="name">Solar Phase 2 - Full Capacity</field>
+        <field name="description">Achieve full 500kW solar capacity across all buildings.</field>
+        <field name="target_date">2025-06-30</field>
+        <field name="target_co2_reduction">5000</field>
+        <field name="reward_points">2500</field>
+    </record>
+
+    <!-- Transport Goals -->
+    <record id="goal_transport_carpool" model="carbon.goal">
+        <field name="initiative_id" ref="initiative_transport"/>
+        <field name="name">Carpool Adoption - 50 Employees</field>
+        <field name="description">Get 50 employees enrolled in the carpool program.</field>
+        <field name="target_date">2025-04-30</field>
+        <field name="target_co2_reduction">500</field>
+        <field name="reward_points">800</field>
+    </record>
+
+    <record id="goal_transport_ev" model="carbon.goal">
+        <field name="initiative_id" ref="initiative_transport"/>
+        <field name="name">EV Fleet Transition - 20%</field>
+        <field name="description">Convert 20% of company fleet to electric vehicles.</field>
+        <field name="target_date">2025-09-30</field>
+        <field name="target_co2_reduction">1500</field>
+        <field name="reward_points">1500</field>
+    </record>
+
+    <record id="goal_transport_year" model="carbon.goal">
+        <field name="initiative_id" ref="initiative_transport"/>
+        <field name="name">Annual Green Commute Target</field>
+        <field name="description">Achieve 3000 kg CO2 reduction through sustainable transport.</field>
+        <field name="target_date">2025-12-31</field>
+        <field name="target_co2_reduction">3000</field>
+        <field name="reward_points">3000</field>
+    </record>
+
+    <!-- Waste Reduction Goals -->
+    <record id="goal_waste_q4_2024" model="carbon.goal">
+        <field name="initiative_id" ref="initiative_waste"/>
+        <field name="name">Q4 2024 Recycling Milestone</field>
+        <field name="description">Establish recycling program and achieve 150kg waste reduction.</field>
+        <field name="target_date">2024-12-31</field>
+        <field name="target_co2_reduction">150</field>
+        <field name="reward_points">400</field>
+    </record>
+
+    <record id="goal_waste_q1_2025" model="carbon.goal">
+        <field name="initiative_id" ref="initiative_waste"/>
+        <field name="name">Q1 2025 Zero Plastic Goal</field>
+        <field name="description">Eliminate all single-use plastics from office spaces.</field>
+        <field name="target_date">2025-03-31</field>
+        <field name="target_co2_reduction">300</field>
+        <field name="reward_points">600</field>
+    </record>
+
+    <record id="goal_waste_midyear" model="carbon.goal">
+        <field name="initiative_id" ref="initiative_waste"/>
+        <field name="name">Mid-Year Waste Reduction</field>
+        <field name="description">Reach 50% overall waste reduction target.</field>
+        <field name="target_date">2025-06-30</field>
+        <field name="target_co2_reduction">1000</field>
+        <field name="reward_points">1200</field>
+    </record>
+
+    <!-- Water Conservation Goals -->
+    <record id="goal_water_pilot" model="carbon.goal">
+        <field name="initiative_id" ref="initiative_water"/>
+        <field name="name">Smart Water Pilot - Building A</field>
+        <field name="description">Install and test smart water systems in one building.</field>
+        <field name="target_date">2025-04-30</field>
+        <field name="target_co2_reduction">5</field>
+        <field name="reward_points">300</field>
+    </record>
+
+    <record id="goal_water_full" model="carbon.goal">
+        <field name="initiative_id" ref="initiative_water"/>
+        <field name="name">Complete Water System Rollout</field>
+        <field name="description">Deploy smart water management across all facilities.</field>
+        <field name="target_date">2025-08-31</field>
+        <field name="target_co2_reduction">500</field>
+        <field name="reward_points">1000</field>
+    </record>
+
+    <!-- Completed Initiative Goal (Already Achieved) -->
+    <record id="goal_led_complete" model="carbon.goal">
+        <field name="initiative_id" ref="initiative_green_office"/>
+        <field name="name">Complete LED Retrofit 2024</field>
+        <field name="description">Replace all traditional lighting with LED systems.</field>
+        <field name="target_date">2024-12-31</field>
+        <field name="target_co2_reduction">1500</field>
+        <field name="reward_points">2000</field>
+    </record>
+
+</odoo>
