@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menu -->
+    <menuitem id="menu_greentrack_root"
+              name="GreenTrack"
+              sequence="10"
+              web_icon="greentrack_carbon,static/description/icon.png"/>
+
+    <!-- Dashboard Menu (placeholder for Phase 3) -->
+    <menuitem id="menu_greentrack_dashboard"
+              name="Dashboard"
+              parent="menu_greentrack_root"
+              sequence="1"/>
+
+    <!-- Initiatives Menu -->
+    <menuitem id="menu_greentrack_initiatives"
+              name="Initiatives"
+              parent="menu_greentrack_root"
+              action="action_carbon_initiative"
+              sequence="10"/>
+
+    <!-- Activities Menu -->
+    <menuitem id="menu_greentrack_activities"
+              name="Activities"
+              parent="menu_greentrack_root"
+              action="action_carbon_activity"
+              sequence="20"/>
+
+    <!-- Goals Menu -->
+    <menuitem id="menu_greentrack_goals"
+              name="Goals"
+              parent="menu_greentrack_root"
+              action="action_carbon_goal"
+              sequence="30"/>
+
+</odoo>

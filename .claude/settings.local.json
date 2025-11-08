@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(python -c:*)",
+      "Bash(tree:*)",
+      "Bash(nul)",
+      "Bash(dir /S /B \"custom_devs\\greentrack_carbon\")",
+      "Bash(python -m py_compile:*)",
+      "Bash(python:*)",
+      "Bash(mkdir:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

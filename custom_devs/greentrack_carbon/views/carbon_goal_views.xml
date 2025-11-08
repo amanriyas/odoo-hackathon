@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Carbon Goal List View -->
+    <record id="view_carbon_goal_list" model="ir.ui.view">
+        <field name="name">carbon.goal.list</field>
+        <field name="model">carbon.goal</field>
+        <field name="arch" type="xml">
+            <list string="Carbon Goals" decoration-success="state=='achieved'" decoration-danger="state=='missed'" decoration-info="state=='in_progress'" decoration-muted="state=='pending'">
+                <field name="name"/>
+                <field name="initiative_id"/>
+                <field name="target_date"/>
+                <field name="target_co2_reduction" string="Target (kg)"/>
+                <field name="actual_co2_reduction" string="Actual (kg)"/>
+                <field name="achievement_percentage" string="Achievement (%)" widget="progressbar"/>
+                <field name="state" widget="badge" decoration-success="state=='achieved'" decoration-danger="state=='missed'" decoration-info="state=='in_progress'" decoration-muted="state=='pending'"/>
+                <field name="reward_points"/>
+                <field name="points_awarded" invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Carbon Goal Form View -->
+    <record id="view_carbon_goal_form" model="ir.ui.view">
+        <field name="name">carbon.goal.form</field>
+        <field name="model">carbon.goal</field>
+        <field name="arch" type="xml">
+            <form string="Carbon Goal">
+                <sheet>
+                    <!-- Status Badge -->
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" icon="fa-trophy" invisible="state != 'achieved'">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="reward_points"/>
+                                </span>
+                                <span class="o_stat_text">Points</span>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Title -->
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" placeholder="e.g., Q1 2025 Carbon Reduction Target"/>
+                        </h1>
+                    </div>
+
+                    <!-- Status Banner -->
+                    <div class="alert alert-success" role="alert" invisible="state != 'achieved'">
+                        <strong>🎉 Goal Achieved!</strong> This milestone has been completed successfully.
+                        <span invisible="not points_awarded">
+                            Reward points have been awarded.
+                        </span>
+                    </div>
+
+                    <div class="alert alert-danger" role="alert" invisible="state != 'missed'">
+                        <strong>⚠️ Goal Missed</strong> The target date has passed but the goal was not achieved.
+                    </div>
+
+                    <div class="alert alert-info" role="alert" invisible="state != 'in_progress'">
+                        <strong>🚀 In Progress</strong> Keep up the good work! You're on track to achieve this goal.
+                    </div>
+
+                    <!-- Main Fields -->
+                    <group>
+                        <group string="Goal Definition">
+                            <field name="initiative_id" options="{'no_create': True}"/>
+                            <field name="target_date"/>
+                            <field name="target_co2_reduction"/>
+                        </group>
+                        <group string="Progress Tracking">
+                            <field name="actual_co2_reduction" readonly="1"/>
+                            <field name="achievement_percentage" widget="progressbar" readonly="1"/>
+                            <field name="state" widget="badge" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <group string="Gamification">
+                        <group>
+                            <field name="reward_points"/>
+                            <field name="points_awarded" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <group string="Description">
+                        <field name="description" nolabel="1" placeholder="Describe the goal, how to achieve it, and why it's important..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Carbon Goal Action -->
+    <record id="action_carbon_goal" model="ir.actions.act_window">
+        <field name="name">Carbon Goals</field>
+        <field name="res_model">carbon.goal</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Set your first Carbon Reduction Goal
+            </p>
+            <p>
+                Create milestones and targets to track progress toward your carbon reduction objectives.
+                Gamify your sustainability efforts with reward points for achieving goals!
+            </p>
+        </field>
+    </record>
+
+</odoo>
