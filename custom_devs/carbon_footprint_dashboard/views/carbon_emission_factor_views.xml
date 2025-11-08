@@ -4,7 +4,7 @@
         <field name="name">carbon.emission.factor.list</field>
         <field name="model">carbon.emission.factor</field>
         <field name="arch" type="xml">
-            <list>
+            <list string="Emission Factors">
                 <field name="name"/>
                 <field name="category"/>
                 <field name="unit_of_measure"/>
@@ -17,7 +17,7 @@
         <field name="name">carbon.emission.factor.form</field>
         <field name="model">carbon.emission.factor</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Emission Factor">
                 <sheet>
                     <group>
                         <field name="name"/>

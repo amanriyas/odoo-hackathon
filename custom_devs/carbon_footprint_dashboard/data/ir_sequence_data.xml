@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seq_carbon_activity" model="ir.sequence">
+        <field name="name">Carbon Activity</field>
+        <field name="code">carbon.activity</field>
+        <field name="prefix">CACT-</field>
+        <field name="padding">4</field>
+    </record>
+</odoo>

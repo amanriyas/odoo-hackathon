@@ -1,10 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="view_carbon_project_kanban" model="ir.ui.view">
+        <field name="name">carbon.project.kanban</field>
+        <field name="model">carbon.project</field>
+        <field name="arch" type="xml">
+            <kanban js_class="kanban_renderer" default_group_by="start_date" class="o_kanban_dashboard">
+                <field name="name"/>
+                <field name="total_emissions"/>
+                <field name="activity_count"/>
+                <field name="target_reduction"/>
+                <field name="achieved_reduction"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record o_card" t-attf-class="{{ record.target_reduction.value > record.total_emissions.value and 'bg-success-subtle' or 'bg-warning-subtle' }}">
+                            <div class="o_kanban_primary_left">
+                                <strong t-esc="record.name.value"/>
+                                <div class="text-muted">
+                                    <t t-esc="record.start_date.value"/> → <t t-esc="record.end_date.value"/>
+                                </div>
+                            </div>
+                            <div class="o_kanban_primary_right text-end pe-2">
+                                <div><b>Total:</b> <t t-esc="record.total_emissions.value"/> kg CO₂e</div>
+                                <div><b>Target:</b> <t t-esc="record.target_reduction.value"/> kg</div>
+                                <div><b>Done:</b> <t t-esc="record.achieved_reduction.value"/> kg</div>
+                            </div>
+                            <div class="mt-2 progress" style="height:6px;">
+                                <div class="progress-bar bg-success" role="progressbar"
+                                    t-att-style="'width:%d%%' % (min(int((record.achieved_reduction.value or 0) / (record.target_reduction.value or 1) * 100),100))"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
     <record id="view_carbon_project_list" model="ir.ui.view">
         <field name="name">carbon.project.list</field>
         <field name="model">carbon.project</field>
         <field name="arch" type="xml">
-            <list>
+            <list string="Carbon Projects">
                 <field name="name"/>
                 <field name="start_date"/>
                 <field name="end_date"/>
@@ -18,7 +54,7 @@
         <field name="name">carbon.project.form</field>
         <field name="model">carbon.project</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Carbon Project">
                 <sheet>
                     <group>
                         <field name="name"/>
@@ -26,6 +62,8 @@
                         <field name="end_date"/>
                         <field name="target_reduction"/>
                         <field name="achieved_reduction"/>
+                        <field name="total_emissions" readonly="1"/>
+                        <field name="activity_count" readonly="1"/>
                     </group>
                     <notebook>
                         <page string="Activities">
@@ -48,6 +86,6 @@
     <record id="action_carbon_project" model="ir.actions.act_window">
         <field name="name">Projects</field>
         <field name="res_model">carbon.project</field>
-        <field name="view_mode">list,form</field>
+        <field name="view_mode">kanban,list,form</field>
     </record>
 </odoo>

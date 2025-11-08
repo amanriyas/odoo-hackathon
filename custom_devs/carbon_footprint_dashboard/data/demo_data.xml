@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Demo projects -->
+    <record id="carbon_project_hq_2025" model="carbon.project">
+        <field name="name">HQ Energy 2025</field>
+        <field name="start_date">2025-01-01</field>
+        <field name="end_date">2025-12-31</field>
+        <field name="target_reduction">250.0</field>
+        <field name="achieved_reduction">40.0</field>
+    </record>
+
+    <record id="carbon_project_transport_2025" model="carbon.project">
+        <field name="name">Staff Transport 2025</field>
+        <field name="start_date">2025-01-01</field>
+        <field name="end_date">2025-12-31</field>
+        <field name="target_reduction">120.0</field>
+        <field name="achieved_reduction">15.0</field>
+    </record>
+
+    <!-- Demo activities: electricity -->
+    <record id="carbon_activity_jan_power" model="carbon.activity">
+        <field name="name">January HQ Power</field>
+        <field name="activity_date">2025-01-15</field>
+        <field name="emission_factor_id" ref="carbon_footprint_dashboard.carbon_factor_electricity"/>
+        <field name="quantity">320</field> <!-- 320 kWh -->
+        <field name="project_id" ref="carbon_footprint_dashboard.carbon_project_hq_2025"/>
+        <field name="source_document">meter:HQ:JAN</field>
+    </record>
+
+    <record id="carbon_activity_feb_power" model="carbon.activity">
+        <field name="name">February HQ Power</field>
+        <field name="activity_date">2025-02-15</field>
+        <field name="emission_factor_id" ref="carbon_footprint_dashboard.carbon_factor_electricity"/>
+        <field name="quantity">280</field>
+        <field name="project_id" ref="carbon_footprint_dashboard.carbon_project_hq_2025"/>
+        <field name="source_document">meter:HQ:FEB</field>
+    </record>
+
+    <!-- Demo activities: transport -->
+    <record id="carbon_activity_jan_transport" model="carbon.activity">
+        <field name="name">Office shuttle Jan</field>
+        <field name="activity_date">2025-01-20</field>
+        <field name="emission_factor_id" ref="carbon_footprint_dashboard.carbon_factor_car_travel"/>
+        <field name="quantity">45</field> <!-- 45 km -->
+        <field name="project_id" ref="carbon_footprint_dashboard.carbon_project_transport_2025"/>
+        <field name="source_document">fleet:shuttle:JAN</field>
+    </record>
+
+    <record id="carbon_activity_feb_transport" model="carbon.activity">
+        <field name="name">Office shuttle Feb</field>
+        <field name="activity_date">2025-02-20</field>
+        <field name="emission_factor_id" ref="carbon_footprint_dashboard.carbon_factor_car_travel"/>
+        <field name="quantity">52</field>
+        <field name="project_id" ref="carbon_footprint_dashboard.carbon_project_transport_2025"/>
+        <field name="source_document">fleet:shuttle:FEB</field>
+    </record>
+
+</odoo>
