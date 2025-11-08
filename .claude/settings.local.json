@@ -8,7 +8,9 @@
       "Bash(dir /S /B \"custom_devs\\greentrack_carbon\")",
       "Bash(python -m py_compile:*)",
       "Bash(python:*)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "WebSearch",
+      "WebFetch(domain:docs.carboninterface.com)"
     ],
     "deny": [],
     "ask": []
