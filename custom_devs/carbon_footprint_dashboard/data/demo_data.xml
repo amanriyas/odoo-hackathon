@@ -18,6 +18,22 @@
         <field name="achieved_reduction">15.0</field>
     </record>
 
+    <record id="carbon_project_data_center_2025" model="carbon.project">
+        <field name="name">Data Center Cooling 2025</field>
+        <field name="start_date">2025-01-01</field>
+        <field name="end_date">2025-12-31</field>
+        <field name="target_reduction">180.0</field>
+        <field name="achieved_reduction">25.0</field>
+    </record>
+
+    <record id="carbon_project_field_sales_2025" model="carbon.project">
+        <field name="name">Field Sales Mobility 2025</field>
+        <field name="start_date">2025-01-01</field>
+        <field name="end_date">2025-12-31</field>
+        <field name="target_reduction">90.0</field>
+        <field name="achieved_reduction">10.0</field>
+    </record>
+
     <!-- Demo activities: electricity -->
     <record id="carbon_activity_jan_power" model="carbon.activity">
         <field name="name">January HQ Power</field>
@@ -37,6 +53,52 @@
         <field name="source_document">meter:HQ:FEB</field>
     </record>
 
+    <record id="carbon_activity_mar_power" model="carbon.activity">
+        <field name="name">March HQ Power</field>
+        <field name="activity_date">2025-03-15</field>
+        <field name="emission_factor_id" ref="carbon_footprint_dashboard.carbon_factor_electricity"/>
+        <field name="quantity">305</field>
+        <field name="project_id" ref="carbon_footprint_dashboard.carbon_project_hq_2025"/>
+        <field name="source_document">meter:HQ:MAR</field>
+    </record>
+
+    <record id="carbon_activity_apr_power" model="carbon.activity">
+        <field name="name">April HQ Power</field>
+        <field name="activity_date">2025-04-15</field>
+        <field name="emission_factor_id" ref="carbon_footprint_dashboard.carbon_factor_electricity"/>
+        <field name="quantity">298</field>
+        <field name="project_id" ref="carbon_footprint_dashboard.carbon_project_hq_2025"/>
+        <field name="source_document">meter:HQ:APR</field>
+    </record>
+
+    <!-- Demo activities: data center electricity -->
+    <record id="carbon_activity_jan_data_center" model="carbon.activity">
+        <field name="name">January Cooling Load</field>
+        <field name="activity_date">2025-01-10</field>
+        <field name="emission_factor_id" ref="carbon_footprint_dashboard.carbon_factor_electricity"/>
+        <field name="quantity">520</field>
+        <field name="project_id" ref="carbon_footprint_dashboard.carbon_project_data_center_2025"/>
+        <field name="source_document">meter:DC:JAN</field>
+    </record>
+
+    <record id="carbon_activity_feb_data_center" model="carbon.activity">
+        <field name="name">February Cooling Load</field>
+        <field name="activity_date">2025-02-10</field>
+        <field name="emission_factor_id" ref="carbon_footprint_dashboard.carbon_factor_electricity"/>
+        <field name="quantity">505</field>
+        <field name="project_id" ref="carbon_footprint_dashboard.carbon_project_data_center_2025"/>
+        <field name="source_document">meter:DC:FEB</field>
+    </record>
+
+    <record id="carbon_activity_mar_data_center" model="carbon.activity">
+        <field name="name">March Cooling Load</field>
+        <field name="activity_date">2025-03-10</field>
+        <field name="emission_factor_id" ref="carbon_footprint_dashboard.carbon_factor_electricity"/>
+        <field name="quantity">488</field>
+        <field name="project_id" ref="carbon_footprint_dashboard.carbon_project_data_center_2025"/>
+        <field name="source_document">meter:DC:MAR</field>
+    </record>
+
     <!-- Demo activities: transport -->
     <record id="carbon_activity_jan_transport" model="carbon.activity">
         <field name="name">Office shuttle Jan</field>
@@ -54,6 +116,43 @@
         <field name="quantity">52</field>
         <field name="project_id" ref="carbon_footprint_dashboard.carbon_project_transport_2025"/>
         <field name="source_document">fleet:shuttle:FEB</field>
+    </record>
+
+    <record id="carbon_activity_mar_transport" model="carbon.activity">
+        <field name="name">Office shuttle Mar</field>
+        <field name="activity_date">2025-03-20</field>
+        <field name="emission_factor_id" ref="carbon_footprint_dashboard.carbon_factor_car_travel"/>
+        <field name="quantity">48</field>
+        <field name="project_id" ref="carbon_footprint_dashboard.carbon_project_transport_2025"/>
+        <field name="source_document">fleet:shuttle:MAR</field>
+    </record>
+
+    <record id="carbon_activity_apr_transport" model="carbon.activity">
+        <field name="name">Office shuttle Apr</field>
+        <field name="activity_date">2025-04-20</field>
+        <field name="emission_factor_id" ref="carbon_footprint_dashboard.carbon_factor_car_travel"/>
+        <field name="quantity">55</field>
+        <field name="project_id" ref="carbon_footprint_dashboard.carbon_project_transport_2025"/>
+        <field name="source_document">fleet:shuttle:APR</field>
+    </record>
+
+    <!-- Demo activities: field sales -->
+    <record id="carbon_activity_field_sales_q1" model="carbon.activity">
+        <field name="name">Field Sales Visits Q1</field>
+        <field name="activity_date">2025-03-28</field>
+        <field name="emission_factor_id" ref="carbon_footprint_dashboard.carbon_factor_car_travel"/>
+        <field name="quantity">320</field>
+        <field name="project_id" ref="carbon_footprint_dashboard.carbon_project_field_sales_2025"/>
+        <field name="source_document">trip:sales:Q1</field>
+    </record>
+
+    <record id="carbon_activity_field_sales_q2" model="carbon.activity">
+        <field name="name">Field Sales Visits Q2</field>
+        <field name="activity_date">2025-06-28</field>
+        <field name="emission_factor_id" ref="carbon_footprint_dashboard.carbon_factor_car_travel"/>
+        <field name="quantity">295</field>
+        <field name="project_id" ref="carbon_footprint_dashboard.carbon_project_field_sales_2025"/>
+        <field name="source_document">trip:sales:Q2</field>
     </record>
 
 </odoo>
