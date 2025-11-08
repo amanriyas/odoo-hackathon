@@ -162,13 +162,13 @@
 
                                     <div class="mt8">
                                         <span title="Target CO2 Reduction">
-                                            🎯 <strong><field name="target_co2_reduction"/> kg</strong>
+                                         <strong class="text-danger">Reduction Target:</strong> <field name="target_co2_reduction"/> kg
                                         </span>
                                     </div>
 
                                     <div class="mt4">
                                         <span title="Actual CO2 Reduction">
-                                            ✅ <field name="actual_co2_reduction"/> kg
+                                            <strong class="text-success">Actual Reduction:</strong> <field name="actual_co2_reduction"/> kg
                                         </span>
                                     </div>
 
