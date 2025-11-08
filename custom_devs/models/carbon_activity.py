@@ -9,7 +9,6 @@ class CarbonActivity(models.Model):
         ('electricity','Electricity'),
         ('fuel','Fuel'),
         ('paper','Paper'),
-        ('travel','Travel'),
         ('waste','Waste'),
         ('water','Water')
     ], required=True)
@@ -19,7 +18,6 @@ class CarbonActivity(models.Model):
         ('kwh','kWh'),
         ('liters','Liters'),
         ('kg','Kg'),
-        ('km','Km'),
         ('sheets','Sheets')
     ], required=True)
     emission_factor = fields.Float()

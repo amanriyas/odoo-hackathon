@@ -8,7 +8,6 @@ class CarbonInitiative(models.Model):
     category = fields.Selection([
         ('energy', 'Energy'),
         ('waste', 'Waste'),
-        ('transport', 'Transport'),
         ('office', 'Office'),
         ('water', 'Water')
     ], required=True)

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_carbon_initiative,carbon.initiative,model_carbon_initiative,,1,1,1,1
+access_carbon_activity,carbon.activity,model_carbon_activity,,1,1,1,1
+access_carbon_goal,carbon.goal,model_carbon_goal,,1,1,1,1
