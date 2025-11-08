@@ -125,7 +125,7 @@
                 <field name="activity_count"/>
                 <templates>
                     <t t-name="card">
-                        <div t-attf-class="oe_kanban_color_#{record.color.raw_value} oe_kanban_card oe_kanban_global_click">
+                        <div class="oe_kanban_card oe_kanban_global_click">
                             <div class="o_dropdown_kanban dropdown">
                                 <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown" href="#" aria-label="Dropdown menu" title="Dropdown menu">
                                     <span class="fa fa-ellipsis-v"/>
@@ -173,13 +173,36 @@
                                     </div>
 
                                     <div class="mt8">
-                                        <field name="progress_percentage" widget="progressbar" title="Progress"/>
+                                        <div class="progress" style="height: 20px;">
+                                            <div t-attf-class="progress-bar {{record.progress_percentage.raw_value >= 100 ? 'bg-success' : ''}} {{record.progress_percentage.raw_value >= 50 and record.progress_percentage.raw_value &lt; 100 ? 'bg-info' : ''}} {{record.progress_percentage.raw_value &lt; 50 ? 'bg-warning' : ''}}" 
+                                                 role="progressbar" 
+                                                 t-attf-style="width: #{record.progress_percentage.raw_value}%;" 
+                                                 t-attf-aria-valuenow="#{record.progress_percentage.raw_value}" 
+                                                 aria-valuemin="0" 
+                                                 aria-valuemax="100">
+                                                <strong><t t-esc="Math.round(record.progress_percentage.raw_value)"/>%</strong>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="o_kanban_record_bottom mt8">
                                     <div class="oe_kanban_bottom_left">
                                         <field name="start_date" widget="date"/>
+                                    </div>
+                                    <div class="oe_kanban_bottom_right">
+                                        <span t-if="record.state.raw_value == 'draft'" class="badge bg-warning">
+                                            <i class="fa fa-pencil"/> Draft
+                                        </span>
+                                        <span t-if="record.state.raw_value == 'active'" class="badge bg-info">
+                                            <i class="fa fa-play-circle"/> Active
+                                        </span>
+                                        <span t-if="record.state.raw_value == 'completed'" class="badge bg-success">
+                                            <i class="fa fa-check-circle"/> Completed
+                                        </span>
+                                        <span t-if="record.state.raw_value == 'cancelled'" class="badge bg-danger">
+                                            <i class="fa fa-times-circle"/> Cancelled
+                                        </span>
                                     </div>
                                 </div>
                             </div>
