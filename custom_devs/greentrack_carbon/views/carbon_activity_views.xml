@@ -12,6 +12,7 @@
                 <field name="quantity"/>
                 <field name="unit"/>
                 <field name="emission_factor" optional="hide"/>
+                <field name="emission_factor_source" widget="badge" optional="show"/>
                 <field name="co2_generated" optional="hide"/>
                 <field name="co2_saved" sum="Total CO2 Saved" decoration-bf="1"/>
                 <field name="initiative_id"/>
@@ -41,12 +42,44 @@
                             <field name="activity_date"/>
                             <field name="quantity"/>
                             <field name="unit"/>
-                            <field name="emission_factor" readonly="1"/>
                         </group>
                         <group string="CO2 Impact">
+                            <field name="emission_factor" readonly="1"/>
+                            <field name="emission_factor_source" widget="badge"/>
                             <field name="co2_generated" readonly="1"/>
                             <field name="co2_saved"/>
-                            <field name="source" widget="badge"/>
+                        </group>
+                    </group>
+
+                    <!-- Phase 4: API Integration Fields (Conditional) -->
+                    <group string="Location Details" invisible="activity_type != 'electricity'">
+                        <group>
+                            <field name="location_country" readonly="1"/>
+                            <field name="location_state"/>
+                        </group>
+                    </group>
+
+                    <group string="Fuel Details" invisible="activity_type != 'fuel'">
+                        <group>
+                            <field name="fuel_type"/>
+                        </group>
+                    </group>
+
+                    <group string="Vehicle Details" invisible="activity_type != 'travel'">
+                        <group>
+                            <field name="vehicle_make"/>
+                            <field name="vehicle_model"/>
+                        </group>
+                        <group>
+                            <field name="vehicle_year"/>
+                        </group>
+                    </group>
+
+                    <!-- API Metadata (Optional, for transparency) -->
+                    <group string="API Information" invisible="emission_factor_source not in ('api_realtime', 'api_cached')">
+                        <group>
+                            <field name="api_estimate_id" readonly="1"/>
+                            <field name="api_response_date" readonly="1"/>
                         </group>
                     </group>
 
@@ -57,6 +90,7 @@
                         </group>
                         <group string="Additional Information">
                             <field name="name" readonly="1"/>
+                            <field name="source" widget="badge"/>
                         </group>
                     </group>
 
