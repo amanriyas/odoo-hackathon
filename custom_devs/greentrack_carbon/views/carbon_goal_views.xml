@@ -69,7 +69,7 @@
                     </group>
 
                     <!-- Impact Display -->
-                    <group string="Environmental Impact">
+                    <group string="Expected Environmental Impact ">
                         <field name="impact" widget="text" nolabel="1" readonly="1"/>
                     </group>
 

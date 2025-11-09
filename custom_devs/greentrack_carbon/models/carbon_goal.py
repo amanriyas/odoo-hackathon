@@ -110,9 +110,6 @@ class CarbonGoal(models.Model):
                     "  🚗  " + cars_formatted + " CAR" + car_plural + " OFF THE ROAD\n"
                     "      └─ Equivalent to 365 days of emissions\n"
                     "\n"
-                    "  💚  " + co2_formatted + " KG CO2 PREVENTED\n"
-                    "      └─ Making a real difference for our planet!\n"
-                    "\n"
                 )
             else:
                 goal.impact = "Set a target reduction to see environmental impact"
