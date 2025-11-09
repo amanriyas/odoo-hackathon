@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ============================================ -->
+    <!-- CARBON ACTIVITY DASHBOARD VIEWS -->
+    <!-- ============================================ -->
+
+    <!-- Line Chart - CO2 Trend Over Time -->
+    <record id="view_carbon_activity_graph_line" model="ir.ui.view">
+        <field name="name">carbon.activity.graph.line</field>
+        <field name="model">carbon.activity</field>
+        <field name="arch" type="xml">
+            <graph string="CO2 Savings Trend" type="line" sample="1">
+                <field name="activity_date" interval="month"/>
+                <field name="co2_saved" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Bar Chart - Emissions by Category -->
+    <record id="view_carbon_activity_graph_bar" model="ir.ui.view">
+        <field name="name">carbon.activity.graph.bar</field>
+        <field name="model">carbon.activity</field>
+        <field name="arch" type="xml">
+            <graph string="CO2 Impact by Activity Type" type="bar" sample="1" stacked="True">
+                <field name="activity_type"/>
+                <field name="co2_saved" type="measure"/>
+                <field name="co2_generated" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Pie Chart - Activity Type Distribution -->
+    <record id="view_carbon_activity_graph_pie" model="ir.ui.view">
+        <field name="name">carbon.activity.graph.pie</field>
+        <field name="model">carbon.activity</field>
+        <field name="arch" type="xml">
+            <graph string="Carbon Savings by Category" type="pie" sample="1">
+                <field name="activity_type"/>
+                <field name="co2_saved" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Pivot Table - Multi-dimensional Analysis -->
+    <record id="view_carbon_activity_pivot" model="ir.ui.view">
+        <field name="name">carbon.activity.pivot</field>
+        <field name="model">carbon.activity</field>
+        <field name="arch" type="xml">
+            <pivot string="Carbon Activity Analysis" sample="1">
+                <field name="activity_date" interval="month" type="row"/>
+                <field name="activity_type" type="col"/>
+                <field name="co2_saved" type="measure"/>
+                <field name="co2_generated" type="measure"/>
+                <field name="quantity" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- ============================================ -->
+    <!-- INITIATIVE DASHBOARD VIEWS -->
+    <!-- ============================================ -->
+
+    <!-- Initiative Graph - Progress Overview -->
+    <record id="view_carbon_initiative_graph_bar" model="ir.ui.view">
+        <field name="name">carbon.initiative.graph.bar</field>
+        <field name="model">carbon.initiative</field>
+        <field name="arch" type="xml">
+            <graph string="Initiative Performance" type="bar" sample="1">
+                <field name="name"/>
+                <field name="target_co2_reduction" type="measure"/>
+                <field name="actual_co2_reduction" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Initiative Pie Chart - By Category -->
+    <record id="view_carbon_initiative_graph_pie" model="ir.ui.view">
+        <field name="name">carbon.initiative.graph.pie</field>
+        <field name="model">carbon.initiative</field>
+        <field name="arch" type="xml">
+            <graph string="Initiatives by Category" type="pie" sample="1">
+                <field name="category"/>
+                <field name="actual_co2_reduction" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Initiative Pivot -->
+    <record id="view_carbon_initiative_pivot" model="ir.ui.view">
+        <field name="name">carbon.initiative.pivot</field>
+        <field name="model">carbon.initiative</field>
+        <field name="arch" type="xml">
+            <pivot string="Initiative Analysis" sample="1">
+                <field name="category" type="row"/>
+                <field name="state" type="col"/>
+                <field name="target_co2_reduction" type="measure"/>
+                <field name="actual_co2_reduction" type="measure"/>
+                <field name="activity_count" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- ============================================ -->
+    <!-- DASHBOARD ACTIONS -->
+    <!-- ============================================ -->
+
+    <!-- Main Carbon Dashboard Action (Activity-based) -->
+    <record id="action_carbon_dashboard" model="ir.actions.act_window">
+        <field name="name">Carbon Dashboard</field>
+        <field name="res_model">carbon.activity</field>
+        <field name="view_mode">graph,pivot</field>
+        <field name="context">{
+            'graph_measure': 'co2_saved',
+            'graph_mode': 'line',
+            'graph_groupbys': ['activity_date:month']
+        }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No carbon activities recorded yet
+            </p>
+            <p>
+                Start logging carbon activities to see your environmental impact visualized here.
+                Track trends, compare categories, and measure progress toward Net Zero 2050!
+            </p>
+        </field>
+    </record>
+
+    <!-- Initiative Performance Dashboard -->
+    <record id="action_carbon_initiative_dashboard" model="ir.actions.act_window">
+        <field name="name">Initiative Performance</field>
+        <field name="res_model">carbon.initiative</field>
+        <field name="view_mode">graph,pivot</field>
+        <field name="context">{
+            'graph_measure': 'actual_co2_reduction',
+            'graph_mode': 'bar'
+        }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first initiative
+            </p>
+            <p>
+                Define carbon reduction initiatives and track their performance through visual analytics.
+            </p>
+        </field>
+    </record>
+
+    <!-- ============================================ -->
+    <!-- GOAL ANALYTICS VIEWS -->
+    <!-- ============================================ -->
+
+    <!-- Goal Achievement Graph -->
+    <record id="view_carbon_goal_graph_bar" model="ir.ui.view">
+        <field name="name">carbon.goal.graph.bar</field>
+        <field name="model">carbon.goal</field>
+        <field name="arch" type="xml">
+            <graph string="Goal Achievement" type="bar" sample="1">
+                <field name="name"/>
+                <field name="target_co2_reduction" type="measure"/>
+                <field name="actual_co2_reduction" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Goal State Distribution -->
+    <record id="view_carbon_goal_graph_pie" model="ir.ui.view">
+        <field name="name">carbon.goal.graph.pie</field>
+        <field name="model">carbon.goal</field>
+        <field name="arch" type="xml">
+            <graph string="Goals by State" type="pie" sample="1">
+                <field name="state"/>
+                <field name="reward_points" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Goal Analytics Action -->
+    <record id="action_carbon_goal_analytics" model="ir.actions.act_window">
+        <field name="name">Goal Analytics</field>
+        <field name="res_model">carbon.goal</field>
+        <field name="view_mode">graph</field>
+        <field name="context">{
+            'graph_measure': 'actual_co2_reduction',
+            'graph_mode': 'bar'
+        }</field>
+    </record>
+
+</odoo>

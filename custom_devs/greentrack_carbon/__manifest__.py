@@ -46,7 +46,9 @@
         'views/carbon_initiative_views.xml',
         'views/carbon_activity_views.xml',
         'views/carbon_goal_views.xml',
+        'views/dashboard_views.xml',
         'views/menu.xml',
+        'data/cron_jobs.xml',
     ],
     'demo': [
         'data/demo_data.xml',

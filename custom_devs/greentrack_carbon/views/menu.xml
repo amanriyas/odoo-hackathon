@@ -6,11 +6,31 @@
               sequence="10"
               web_icon="greentrack_carbon,static/description/icon.png"/>
 
-    <!-- Dashboard Menu (placeholder for Phase 3) -->
+    <!-- Dashboard Menu -->
     <menuitem id="menu_greentrack_dashboard"
               name="Dashboard"
               parent="menu_greentrack_root"
+              action="action_carbon_dashboard"
               sequence="1"/>
+
+    <!-- Sub-menus under Dashboard -->
+    <menuitem id="menu_greentrack_dashboard_activities"
+              name="Activity Analytics"
+              parent="menu_greentrack_dashboard"
+              action="action_carbon_dashboard"
+              sequence="1"/>
+
+    <menuitem id="menu_greentrack_dashboard_initiatives"
+              name="Initiative Performance"
+              parent="menu_greentrack_dashboard"
+              action="action_carbon_initiative_dashboard"
+              sequence="2"/>
+
+    <menuitem id="menu_greentrack_dashboard_goals"
+              name="Goal Achievement"
+              parent="menu_greentrack_dashboard"
+              action="action_carbon_goal_analytics"
+              sequence="3"/>
 
     <!-- Initiatives Menu -->
     <menuitem id="menu_greentrack_initiatives"

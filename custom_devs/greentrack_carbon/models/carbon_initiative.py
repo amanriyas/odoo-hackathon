@@ -64,9 +64,9 @@ class CarbonInitiative(models.Model):
     # Status
     state = fields.Selection(
         selection=[
+             ('completed', 'Completed'),
+             ('active', 'Active'),
             ('draft', 'Draft'),
-            ('active', 'Active'),
-            ('completed', 'Completed'),
             ('cancelled', 'Cancelled'),
         ],
         string="Status",
