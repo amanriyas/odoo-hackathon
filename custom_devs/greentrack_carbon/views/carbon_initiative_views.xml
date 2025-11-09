@@ -55,7 +55,7 @@
                             <field name="target_co2_reduction"/>
                             <field name="actual_co2_reduction"/>
                             <field name="progress_percentage" widget="progressbar"/>
-                            <field name="color" widget="color_picker" groups="base.group_no_one"/>
+
                         </group>
                     </group>
 
@@ -225,20 +225,7 @@
                                     <div class="oe_kanban_bottom_left">
                                         <field name="start_date" widget="date"/>
                                     </div>
-                                    <div class="oe_kanban_bottom_right">
-                                        <span t-if="record.state.raw_value == 'draft'" class="badge bg-warning">
-                                            <i class="fa fa-pencil"/> Draft
-                                        </span>
-                                        <span t-if="record.state.raw_value == 'active'" class="badge bg-info">
-                                            <i class="fa fa-play-circle"/> Active
-                                        </span>
-                                        <span t-if="record.state.raw_value == 'completed'" class="badge bg-success">
-                                            <i class="fa fa-check-circle"/> Completed
-                                        </span>
-                                        <span t-if="record.state.raw_value == 'cancelled'" class="badge bg-danger">
-                                            <i class="fa fa-times-circle"/> Cancelled
-                                        </span>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
