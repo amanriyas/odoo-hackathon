@@ -112,7 +112,7 @@
                                     <field name="actual_co2_reduction"/>
                                     <field name="achievement_percentage" widget="progressbar"/>
                                     <field name="state" widget="badge"/>
-                                    <field name="reward_points"/>
+
                                 </list>
                             </field>
                         </page>

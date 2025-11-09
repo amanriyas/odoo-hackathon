@@ -80,20 +80,43 @@ class CarbonGoal(models.Model):
         help="Carbon initiative this goal belongs to"
     )
 
-    # Gamification
-    reward_points = fields.Integer(
-        string="Reward Points",
-        default=100,
-        help="Points awarded when goal is achieved (for gamification)"
-    )
-
-    points_awarded = fields.Boolean(
-        string="Points Awarded",
-        default=False,
-        help="Track if reward points have been given"
+    # Impact Display
+    impact = fields.Text(
+        compute='_compute_impact',
+        string="Impact",
+        help="Environmental impact equivalent of achieving this goal"
     )
 
     # Computed Methods
+    @api.depends('target_co2_reduction')
+    def _compute_impact(self):
+        """Compute impact and display in familiar terms like saved trees, cars off road, etc."""
+        for goal in self:
+            if goal.target_co2_reduction > 0:
+                trees_saved = goal.target_co2_reduction / 21.77
+                cars_off_road = goal.target_co2_reduction / 4040
+                
+                trees_formatted = "{:,.0f}".format(trees_saved)
+                cars_formatted = "{:,.1f}".format(cars_off_road)
+                co2_formatted = "{:,.0f}".format(goal.target_co2_reduction)
+                
+                tree_plural = 'S' if trees_saved != 1 else ''
+                car_plural = 'S' if cars_off_road != 1 else ''
+                
+                goal.impact = (
+                    "  🌳  " + trees_formatted + " TREE" + tree_plural + " PLANTED\n"
+                    "      └─ Absorbing CO2 for an entire year\n"
+                    "\n"
+                    "  🚗  " + cars_formatted + " CAR" + car_plural + " OFF THE ROAD\n"
+                    "      └─ Equivalent to 365 days of emissions\n"
+                    "\n"
+                    "  💚  " + co2_formatted + " KG CO2 PREVENTED\n"
+                    "      └─ Making a real difference for our planet!\n"
+                    "\n"
+                )
+            else:
+                goal.impact = "Set a target reduction to see environmental impact"
+
     @api.depends('initiative_id', 'initiative_id.carbon_activity_ids', 'initiative_id.carbon_activity_ids.co2_saved', 'target_date')
     def _compute_actual(self):
         """
@@ -142,14 +165,10 @@ class CarbonGoal(models.Model):
             if goal.achievement_percentage >= 100:
                 # Target achieved or exceeded
                 goal.state = 'achieved'
-
-                # Award points if not already awarded
-                if not goal.points_awarded and goal.reward_points > 0:
-                    goal.points_awarded = True
-                    _logger.info(
-                        f"Goal '{goal.name}' achieved! "
-                        f"Awarding {goal.reward_points} points."
-                    )
+                _logger.info(
+                    f"Goal '{goal.name}' achieved! "
+                    f"Reduced {goal.actual_co2_reduction} kg CO2"
+                )
 
             elif goal.actual_co2_reduction == 0:
                 # No progress yet
@@ -180,13 +199,4 @@ class CarbonGoal(models.Model):
             if goal.target_co2_reduction <= 0:
                 raise ValidationError(
                     _('Target CO2 reduction must be greater than zero!')
-                )
-
-    @api.constrains('reward_points')
-    def _check_reward_points(self):
-        """Ensure reward points are non-negative"""
-        for goal in self:
-            if goal.reward_points < 0:
-                raise ValidationError(
-                    _('Reward points cannot be negative!')
                 )

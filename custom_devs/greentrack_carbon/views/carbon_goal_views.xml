@@ -13,8 +13,6 @@
                 <field name="actual_co2_reduction" string="Actual (kg)"/>
                 <field name="achievement_percentage" string="Achievement (%)" widget="progressbar"/>
                 <field name="state" widget="badge" decoration-success="state=='achieved'" decoration-danger="state=='missed'" decoration-info="state=='in_progress'" decoration-muted="state=='pending'"/>
-                <field name="reward_points"/>
-                <field name="points_awarded" invisible="1"/>
             </list>
         </field>
     </record>
@@ -28,12 +26,9 @@
                 <sheet>
                     <!-- Status Badge -->
                     <div class="oe_button_box" name="button_box">
-                        <button class="oe_stat_button" icon="fa-trophy" invisible="state != 'achieved'">
+                        <button class="oe_stat_button" icon="fa-leaf" type="object" invisible="state != 'achieved'">
                             <div class="o_field_widget o_stat_info">
-                                <span class="o_stat_value">
-                                    <field name="reward_points"/>
-                                </span>
-                                <span class="o_stat_text">Points</span>
+                                <span class="o_stat_text">🎉 Goal Achieved!</span>
                             </div>
                         </button>
                     </div>
@@ -49,9 +44,6 @@
                     <!-- Status Banner -->
                     <div class="alert alert-success" role="alert" invisible="state != 'achieved'">
                         <strong>🎉 Goal Achieved!</strong> This milestone has been completed successfully.
-                        <span invisible="not points_awarded">
-                            Reward points have been awarded.
-                        </span>
                     </div>
 
                     <div class="alert alert-danger" role="alert" invisible="state != 'missed'">
@@ -76,11 +68,9 @@
                         </group>
                     </group>
 
-                    <group string="Gamification">
-                        <group>
-                            <field name="reward_points"/>
-                            <field name="points_awarded" readonly="1"/>
-                        </group>
+                    <!-- Impact Display -->
+                    <group string="Environmental Impact">
+                        <field name="impact" widget="text" nolabel="1" readonly="1"/>
                     </group>
 
                     <group string="Description">
@@ -102,7 +92,7 @@
             </p>
             <p>
                 Create milestones and targets to track progress toward your carbon reduction objectives.
-                Gamify your sustainability efforts with reward points for achieving goals!
+                See the real-world environmental impact of achieving your goals!
             </p>
         </field>
     </record>

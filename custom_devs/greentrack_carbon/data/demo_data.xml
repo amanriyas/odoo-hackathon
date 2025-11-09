@@ -421,7 +421,6 @@
         <field name="description">Reduce paper usage by implementing digital workflows in HR and Finance departments.</field>
         <field name="target_date">2025-03-31</field>
         <field name="target_co2_reduction">40</field>
-        <field name="reward_points">500</field>
     </record>
 
     <record id="goal_paperless_q2" model="carbon.goal">
@@ -430,7 +429,6 @@
         <field name="description">Expand e-signature and cloud storage to all departments.</field>
         <field name="target_date">2025-06-30</field>
         <field name="target_co2_reduction">100</field>
-        <field name="reward_points">750</field>
     </record>
 
     <record id="goal_paperless_year" model="carbon.goal">
@@ -439,7 +437,7 @@
         <field name="description">Achieve 90% paperless operations across the organization.</field>
         <field name="target_date">2025-12-31</field>
         <field name="target_co2_reduction">1000</field>
-        <field name="reward_points">2000</field>
+
     </record>
 
     <!-- Solar Energy Goals -->
@@ -449,7 +447,6 @@
         <field name="description">Complete installation of 250kW solar capacity on Building A.</field>
         <field name="target_date">2025-03-31</field>
         <field name="target_co2_reduction">2000</field>
-        <field name="reward_points">1000</field>
     </record>
 
     <record id="goal_solar_phase2" model="carbon.goal">
@@ -458,7 +455,6 @@
         <field name="description">Achieve full 500kW solar capacity across all buildings.</field>
         <field name="target_date">2025-06-30</field>
         <field name="target_co2_reduction">5000</field>
-        <field name="reward_points">2500</field>
     </record>
 
     <!-- Transport Goals -->
@@ -468,7 +464,6 @@
         <field name="description">Get 50 employees enrolled in the carpool program.</field>
         <field name="target_date">2025-04-30</field>
         <field name="target_co2_reduction">500</field>
-        <field name="reward_points">800</field>
     </record>
 
     <record id="goal_transport_ev" model="carbon.goal">
@@ -477,7 +472,6 @@
         <field name="description">Convert 20% of company fleet to electric vehicles.</field>
         <field name="target_date">2025-09-30</field>
         <field name="target_co2_reduction">1500</field>
-        <field name="reward_points">1500</field>
     </record>
 
     <record id="goal_transport_year" model="carbon.goal">
@@ -486,7 +480,6 @@
         <field name="description">Achieve 3000 kg CO2 reduction through sustainable transport.</field>
         <field name="target_date">2025-12-31</field>
         <field name="target_co2_reduction">3000</field>
-        <field name="reward_points">3000</field>
     </record>
 
     <!-- Waste Reduction Goals -->
@@ -496,7 +489,6 @@
         <field name="description">Establish recycling program and achieve 150kg waste reduction.</field>
         <field name="target_date">2024-12-31</field>
         <field name="target_co2_reduction">150</field>
-        <field name="reward_points">400</field>
     </record>
 
     <record id="goal_waste_q1_2025" model="carbon.goal">
@@ -505,7 +497,6 @@
         <field name="description">Eliminate all single-use plastics from office spaces.</field>
         <field name="target_date">2025-03-31</field>
         <field name="target_co2_reduction">300</field>
-        <field name="reward_points">600</field>
     </record>
 
     <record id="goal_waste_midyear" model="carbon.goal">
@@ -514,7 +505,6 @@
         <field name="description">Reach 50% overall waste reduction target.</field>
         <field name="target_date">2025-06-30</field>
         <field name="target_co2_reduction">1000</field>
-        <field name="reward_points">1200</field>
     </record>
 
     <!-- Water Conservation Goals -->
@@ -524,7 +514,6 @@
         <field name="description">Install and test smart water systems in one building.</field>
         <field name="target_date">2025-04-30</field>
         <field name="target_co2_reduction">5</field>
-        <field name="reward_points">300</field>
     </record>
 
     <record id="goal_water_full" model="carbon.goal">
@@ -533,7 +522,6 @@
         <field name="description">Deploy smart water management across all facilities.</field>
         <field name="target_date">2025-08-31</field>
         <field name="target_co2_reduction">500</field>
-        <field name="reward_points">1000</field>
     </record>
 
     <!-- Completed Initiative Goal (Already Achieved) -->
@@ -543,7 +531,7 @@
         <field name="description">Replace all traditional lighting with LED systems.</field>
         <field name="target_date">2024-12-31</field>
         <field name="target_co2_reduction">1500</field>
-        <field name="reward_points">2000</field>
+
     </record>
 
 </odoo>
