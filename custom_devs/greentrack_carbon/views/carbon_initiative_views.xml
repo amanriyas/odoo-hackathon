@@ -137,7 +137,6 @@
                 <field name="actual_co2_reduction"/>
                 <field name="progress_percentage"/>
                 <field name="state"/>
-                <field name="color"/>
                 <field name="activity_count"/>
                 <field name="trend_indicator"/>
                 <field name="predicted_next_month_co2"/>

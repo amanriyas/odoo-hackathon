@@ -114,11 +114,6 @@ class CarbonInitiative(models.Model):
     )
 
     # UI and Display
-    color = fields.Integer(
-        string="Color Index",
-        help="Color for Kanban view",
-        default=0
-    )
 
     activity_count = fields.Integer(
         string="Activity Count",

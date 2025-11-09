@@ -72,9 +72,6 @@
                             <field name="vehicle_make"/>
                             <field name="vehicle_model"/>
                         </group>
-                        <group>
-                            <field name="vehicle_year"/>
-                        </group>
                     </group>
 
                     <group>

@@ -198,11 +198,6 @@ class CarbonActivity(models.Model):
         help="Vehicle model (e.g., Camry, Land Cruiser)"
     )
 
-    vehicle_year = fields.Integer(
-        string="Vehicle Year",
-        help="Model year of the vehicle"
-    )
-
     # Computed Methods
     @api.depends('activity_type', 'quantity', 'activity_date')
     def _compute_name(self):
