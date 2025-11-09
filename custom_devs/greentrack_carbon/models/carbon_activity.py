@@ -3,13 +3,8 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 import logging
-import random
-from datetime import datetime, timedelta
 
 _logger = logging.getLogger(__name__)
-
-# Note: For production with real API, install: pip install requests
-# import requests
 
 
 # UAE Standard Emission Factors
@@ -147,27 +142,15 @@ class CarbonActivity(models.Model):
         help="Additional comments or details about this activity"
     )
 
-    # API Integration Fields (Phase 4)
+    # Emission Factor Source
     emission_factor_source = fields.Selection(
         selection=[
-            ('api_realtime', 'API - Real-time'),
-            ('api_cached', 'API - Cached'),
             ('static_uae', 'Static - UAE Standard'),
             ('static_generic', 'Static - Generic'),
         ],
         string="Emission Factor Source",
-        default='static_generic',
+        default='static_uae',
         help="Source of the emission factor data"
-    )
-
-    api_estimate_id = fields.Char(
-        string="API Estimate ID",
-        help="Carbon Interface API estimate ID for traceability"
-    )
-
-    api_response_date = fields.Datetime(
-        string="API Response Date",
-        help="When was this emission factor fetched from API?"
     )
 
     # Location Fields (for electricity estimates)
@@ -263,30 +246,14 @@ class CarbonActivity(models.Model):
     def _onchange_activity_type(self):
         """
         Auto-fill emission factor when activity type changes
-        Phase 4: Integrates with API for real-time emission factors with fallback
+        Uses static UAE emission factors
         """
         if not self.activity_type:
             return
 
-        # Try API integration first
-        try:
-            api_result = self.fetch_emission_factor_from_api()
-
-            if api_result:
-                self.emission_factor = api_result['emission_factor']
-                self.emission_factor_source = api_result['source']
-                self.api_estimate_id = api_result.get('estimate_id')
-                self.api_response_date = fields.Datetime.now()
-
-                _logger.info(
-                    f"API: {self.activity_type} emission factor = {self.emission_factor} "
-                    f"(source: {self.emission_factor_source})"
-                )
-        except Exception as e:
-            # API failed - use static fallback
-            _logger.warning(f"API fetch failed for {self.activity_type}, using static: {e}")
-            self.emission_factor = self._get_default_emission_factor(self.activity_type)
-            self.emission_factor_source = 'static_uae'
+        # Use static emission factor
+        self.emission_factor = self._get_default_emission_factor(self.activity_type)
+        self.emission_factor_source = 'static_uae'
 
         # Set recommended unit based on activity type
         unit_mapping = {
@@ -299,21 +266,9 @@ class CarbonActivity(models.Model):
         }
         self.unit = unit_mapping.get(self.activity_type, 'kg')
 
-    @api.onchange('fuel_type', 'location_state', 'vehicle_make', 'vehicle_model', 'vehicle_year')
-    def _onchange_api_params(self):
-        """
-        Re-fetch emission factor when API parameters change
-        """
-        if self.activity_type:
-            try:
-                api_result = self.fetch_emission_factor_from_api()
-                if api_result:
-                    self.emission_factor = api_result['emission_factor']
-                    self.emission_factor_source = api_result['source']
-                    self.api_estimate_id = api_result.get('estimate_id')
-                    self.api_response_date = fields.Datetime.now()
-            except Exception as e:
-                _logger.warning(f"API parameter change failed: {e}")
+        _logger.debug(
+            f"Activity type '{self.activity_type}': emission factor = {self.emission_factor} kg CO2"
+        )
 
     # Helper Methods
     def _get_default_emission_factor(self, activity_type):
@@ -322,111 +277,6 @@ class CarbonActivity(models.Model):
         Used as fallback when API is unavailable
         """
         return EMISSION_FACTORS.get(activity_type, 0.0)
-
-    def fetch_emission_factor_from_api(self):
-        """
-        Fetch emission factor from Carbon Interface API (Mock Mode for Hackathon)
-
-        For production: Replace this with real API calls to:
-        https://www.carboninterface.com/api/v1/estimates
-
-        Returns dict with:
-        - emission_factor: float
-        - source: str (api_realtime/static_uae)
-        - estimate_id: str (optional)
-        """
-        self.ensure_one()
-
-        # Mock API Mode - Simulates API with realistic variations
-        # For demo purposes - shows API integration concept
-
-        base_factor = self._get_default_emission_factor(self.activity_type)
-
-        if self.activity_type in ['electricity', 'fuel', 'travel']:
-            # Simulate API with ±5% variation
-            variation = random.uniform(0.95, 1.05)
-            api_factor = base_factor * variation
-
-            # Apply regional/specific adjustments
-            if self.activity_type == 'electricity' and self.location_state:
-                # Simulate different grid mixes per emirate
-                emirate_factors = {
-                    'du': 0.93,  # Dubai - more natural gas
-                    'ad': 1.02,  # Abu Dhabi - more diverse
-                    'sh': 0.98,  # Sharjah
-                }
-                api_factor = base_factor * emirate_factors.get(self.location_state, 1.0)
-
-            elif self.activity_type == 'fuel' and self.fuel_type:
-                # Different fuels have different factors
-                fuel_multipliers = {
-                    'gasoline': 1.0,
-                    'diesel': 1.16,  # Diesel higher emissions
-                    'natural_gas': 0.8,
-                    'jet_fuel': 1.2,
-                    'propane': 0.95,
-                }
-                api_factor = base_factor * fuel_multipliers.get(self.fuel_type, 1.0)
-
-            elif self.activity_type == 'travel' and self.vehicle_make and self.vehicle_model:
-                # Simulate vehicle-specific factors
-                if 'Land Cruiser' in str(self.vehicle_model) or 'Patrol' in str(self.vehicle_model):
-                    api_factor = base_factor * 2.33  # Large SUVs
-                elif 'Camry' in str(self.vehicle_model) or 'Accord' in str(self.vehicle_model):
-                    api_factor = base_factor * 1.25  # Mid-size sedans
-                elif 'Civic' in str(self.vehicle_model) or 'Corolla' in str(self.vehicle_model):
-                    api_factor = base_factor * 1.08  # Compact cars
-
-            # Generate mock estimate ID
-            estimate_id = f"est_mock_{self.activity_type}_{random.randint(1000, 9999)}"
-
-            _logger.info(
-                f"Mock API returned {api_factor:.4f} for {self.activity_type} "
-                f"(base: {base_factor}, estimate_id: {estimate_id})"
-            )
-
-            return {
-                'emission_factor': round(api_factor, 4),
-                'source': 'api_realtime',
-                'estimate_id': estimate_id,
-            }
-        else:
-            # Activities not covered by API (paper, waste, water)
-            # Use static UAE factors
-            return {
-                'emission_factor': base_factor,
-                'source': 'static_uae',
-                'estimate_id': None,
-            }
-
-    def update_emission_factors_from_api(self):
-        """
-        Scheduled method to refresh emission factors from API
-        Called by cron job weekly
-        """
-        activities = self.search([
-            ('emission_factor_source', '=', 'api_realtime'),
-            ('activity_date', '>=', fields.Date.today() - timedelta(days=90))
-        ])
-
-        _logger.info(f"Scheduled API update: Checking {len(activities)} recent activities")
-
-        updated_count = 0
-        for activity in activities:
-            try:
-                api_result = activity.fetch_emission_factor_from_api()
-                if api_result and abs(api_result['emission_factor'] - activity.emission_factor) > 0.01:
-                    # Factor has changed significantly
-                    _logger.info(
-                        f"Updated activity {activity.id}: {activity.emission_factor} -> "
-                        f"{api_result['emission_factor']}"
-                    )
-                    updated_count += 1
-            except Exception as e:
-                _logger.error(f"Failed to update activity {activity.id}: {e}")
-
-        _logger.info(f"Scheduled API update complete: {updated_count} activities updated")
-        return True
 
     # Constraints
     @api.constrains('quantity')

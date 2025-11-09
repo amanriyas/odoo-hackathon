@@ -168,10 +168,9 @@
         <field name="quantity">1500</field>
         <field name="unit">kwh</field>
         <field name="emission_factor">0.42</field>
-        <field name="emission_factor_source">api_realtime</field>
+        <field name="emission_factor_source">static_uae</field>
         <field name="location_state">du</field>
-        <field name="api_estimate_id">est_mock_elec_1234</field>
-        <field name="source">api</field>
+        <field name="source">manual</field>
         <field name="notes">First week of solar panel operation - Dubai DEWA Grid</field>
     </record>
 
@@ -183,10 +182,9 @@
         <field name="quantity">3200</field>
         <field name="unit">kwh</field>
         <field name="emission_factor">0.42</field>
-        <field name="emission_factor_source">api_realtime</field>
+        <field name="emission_factor_source">static_uae</field>
         <field name="location_state">du</field>
-        <field name="api_estimate_id">est_mock_elec_5678</field>
-        <field name="source">api</field>
+        <field name="source">manual</field>
         <field name="notes">Full month solar generation - March (Dubai)</field>
     </record>
 
@@ -198,10 +196,9 @@
         <field name="quantity">3500</field>
         <field name="unit">kwh</field>
         <field name="emission_factor">0.42</field>
-        <field name="emission_factor_source">api_realtime</field>
+        <field name="emission_factor_source">static_uae</field>
         <field name="location_state">du</field>
-        <field name="api_estimate_id">est_mock_elec_9012</field>
-        <field name="source">api</field>
+        <field name="source">manual</field>
         <field name="notes">Solar generation - April peak summer (Dubai)</field>
     </record>
 
@@ -214,11 +211,10 @@
         <field name="quantity">450</field>
         <field name="unit">km</field>
         <field name="emission_factor">0.28</field>
-        <field name="emission_factor_source">api_realtime</field>
+        <field name="emission_factor_source">static_uae</field>
         <field name="vehicle_make">Toyota</field>
         <field name="vehicle_model">Land Cruiser</field>
         <field name="vehicle_year">2020</field>
-        <field name="api_estimate_id">est_mock_vehicle_3456</field>
         <field name="source">manual</field>
         <field name="notes">Carpool week 1 - 3 employees (Toyota Land Cruiser)</field>
     </record>
@@ -231,11 +227,10 @@
         <field name="quantity">820</field>
         <field name="unit">km</field>
         <field name="emission_factor">0.15</field>
-        <field name="emission_factor_source">api_realtime</field>
+        <field name="emission_factor_source">static_uae</field>
         <field name="vehicle_make">Toyota</field>
         <field name="vehicle_model">Camry</field>
         <field name="vehicle_year">2021</field>
-        <field name="api_estimate_id">est_mock_vehicle_7890</field>
         <field name="source">manual</field>
         <field name="notes">Carpool program expanding - 5 groups (Mid-size sedans)</field>
     </record>
@@ -248,9 +243,8 @@
         <field name="quantity">150</field>
         <field name="unit">liters</field>
         <field name="emission_factor">2.68</field>
-        <field name="emission_factor_source">api_realtime</field>
+        <field name="emission_factor_source">static_uae</field>
         <field name="fuel_type">diesel</field>
-        <field name="api_estimate_id">est_mock_fuel_2345</field>
         <field name="source">manual</field>
         <field name="notes">EV adoption - replaced diesel consumption</field>
     </record>
@@ -263,11 +257,10 @@
         <field name="quantity">1200</field>
         <field name="unit">km</field>
         <field name="emission_factor">0.13</field>
-        <field name="emission_factor_source">api_realtime</field>
+        <field name="emission_factor_source">static_uae</field>
         <field name="vehicle_make">Honda</field>
         <field name="vehicle_model">Civic</field>
         <field name="vehicle_year">2022</field>
-        <field name="api_estimate_id">est_mock_vehicle_4567</field>
         <field name="source">manual</field>
         <field name="notes">Metro pass program - 10 employees (Honda Civic carpools)</field>
     </record>
@@ -280,9 +273,8 @@
         <field name="quantity">200</field>
         <field name="unit">liters</field>
         <field name="emission_factor">2.31</field>
-        <field name="emission_factor_source">api_realtime</field>
+        <field name="emission_factor_source">static_uae</field>
         <field name="fuel_type">gasoline</field>
-        <field name="api_estimate_id">est_mock_fuel_6789</field>
         <field name="source">manual</field>
         <field name="notes">Company EV fleet - Month 1 (replaced gasoline)</field>
     </record>
@@ -363,7 +355,7 @@
         <field name="quantity">5000</field>
         <field name="unit">liters</field>
         <field name="emission_factor">0.0003</field>
-        <field name="source">api</field>
+        <field name="source">manual</field>
         <field name="notes">Low-flow fixtures installation - Week 1</field>
     </record>
 
@@ -376,7 +368,7 @@
         <field name="quantity">8000</field>
         <field name="unit">liters</field>
         <field name="emission_factor">0.0003</field>
-        <field name="source">api</field>
+        <field name="source">manual</field>
         <field name="notes">Smart meters tracking savings</field>
     </record>
 
@@ -389,7 +381,7 @@
         <field name="quantity">12000</field>
         <field name="unit">liters</field>
         <field name="emission_factor">0.0003</field>
-        <field name="source">api</field>
+        <field name="source">manual</field>
         <field name="notes">Rainwater harvesting system active</field>
     </record>
 

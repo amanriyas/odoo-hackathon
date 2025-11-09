@@ -59,6 +59,26 @@
                         </group>
                     </group>
 
+                    <!-- AI Predictions Section (Phase 5) -->
+                    <group string="AI Predictions" invisible="activity_count &lt; 2">
+                        <group>
+                            <label for="predicted_next_month_co2" string="Next Month Forecast"/>
+                            <div class="o_row">
+                                <field name="predicted_next_month_co2" class="oe_inline"/>
+                                <span class="text-muted">kg CO2</span>
+                            </div>
+                            <field name="trend_indicator" widget="badge" decoration-success="trend_indicator == 'improving'" decoration-info="trend_indicator == 'stable'" decoration-warning="trend_indicator == 'declining'"/>
+                        </group>
+                        <group>
+                            <field name="top_activity_type"/>
+                            <label for="prediction_confidence" string="Confidence"/>
+                            <div class="o_row">
+                                <field name="prediction_confidence" class="oe_inline"/>
+                                <span>%</span>
+                            </div>
+                        </group>
+                    </group>
+
                     <!-- Notebook with Tabs -->
                     <notebook>
                         <!-- Description Tab -->
@@ -119,6 +139,8 @@
                 <field name="state"/>
                 <field name="color"/>
                 <field name="activity_count"/>
+                <field name="trend_indicator"/>
+                <field name="predicted_next_month_co2"/>
                 <templates>
                     <t t-name="card">
                         <div class="oe_kanban_card oe_kanban_global_click"
@@ -170,6 +192,18 @@
                                     <div class="mt4">
                                         <span title="Actual CO2 Reduction">
                                             <strong class="text-success">Actual Reduction:</strong> <field name="actual_co2_reduction"/> kg
+                                        </span>
+                                    </div>
+
+                                    <!-- AI Prediction Display -->
+                                    <div class="mt4" t-if="record.activity_count.raw_value >= 2">
+                                        <span class="badge" t-attf-class="badge-{{record.trend_indicator.raw_value == 'improving' ? 'success' : record.trend_indicator.raw_value == 'declining' ? 'warning' : 'info'}}" title="AI Trend Analysis">
+                                            <t t-if="record.trend_indicator.raw_value == 'improving'">📈 Improving</t>
+                                            <t t-if="record.trend_indicator.raw_value == 'stable'">➡️ Stable</t>
+                                            <t t-if="record.trend_indicator.raw_value == 'declining'">📉 Declining</t>
+                                        </span>
+                                        <span class="text-muted ml-2" title="Predicted Next Month">
+                                            Next: <t t-esc="record.predicted_next_month_co2.value"/> kg
                                         </span>
                                     </div>
 

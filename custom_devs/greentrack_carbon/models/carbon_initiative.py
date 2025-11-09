@@ -126,6 +126,36 @@ class CarbonInitiative(models.Model):
         help="Number of activities logged for this initiative"
     )
 
+    # AI Prediction Fields (Phase 5)
+    predicted_next_month_co2 = fields.Float(
+        string="Predicted Next Month CO2 (kg)",
+        compute='_compute_ai_predictions',
+        help="AI prediction for CO2 savings next month"
+    )
+
+    trend_indicator = fields.Selection(
+        selection=[
+            ('improving', 'Improving'),
+            ('stable', 'Stable'),
+            ('declining', 'Declining'),
+        ],
+        string="Trend",
+        compute='_compute_ai_predictions',
+        help="Trend analysis: improving, stable, or declining"
+    )
+
+    top_activity_type = fields.Char(
+        string="Top Activity Type",
+        compute='_compute_ai_predictions',
+        help="Activity type with highest CO2 savings contribution"
+    )
+
+    prediction_confidence = fields.Float(
+        string="Prediction Confidence (%)",
+        compute='_compute_ai_predictions',
+        help="Confidence score for AI predictions (0-100%)"
+    )
+
     # Computed Methods
     @api.depends('carbon_activity_ids', 'carbon_activity_ids.co2_saved')
     def _compute_actual_reduction(self):
@@ -153,6 +183,46 @@ class CarbonInitiative(models.Model):
         """Count number of activities"""
         for initiative in self:
             initiative.activity_count = len(initiative.carbon_activity_ids)
+
+    @api.depends('carbon_activity_ids', 'carbon_activity_ids.co2_saved', 'carbon_activity_ids.activity_date')
+    def _compute_ai_predictions(self):
+        """Calculate AI predictions using the prediction engine"""
+        prediction_engine = self.env['carbon.prediction']
+
+        for initiative in self:
+            # Only compute if we have sufficient data (at least 2 activities)
+            if len(initiative.carbon_activity_ids) >= 2:
+                try:
+                    # Predict next month CO2
+                    initiative.predicted_next_month_co2 = prediction_engine.predict_next_month_co2(initiative.id)
+
+                    # Calculate trend
+                    initiative.trend_indicator = prediction_engine.calculate_trend(initiative.id)
+
+                    # Get top activity type
+                    initiative.top_activity_type = prediction_engine.get_top_activity_type(initiative.id)
+
+                    # Get confidence score
+                    initiative.prediction_confidence = prediction_engine.get_confidence_score(initiative.id)
+
+                    _logger.debug(
+                        f"AI predictions for '{initiative.name}': "
+                        f"Predicted={initiative.predicted_next_month_co2} kg, "
+                        f"Trend={initiative.trend_indicator}, "
+                        f"Top Type={initiative.top_activity_type}"
+                    )
+                except Exception as e:
+                    _logger.warning(f"Failed to compute AI predictions for initiative {initiative.id}: {e}")
+                    initiative.predicted_next_month_co2 = 0.0
+                    initiative.trend_indicator = 'stable'
+                    initiative.top_activity_type = False
+                    initiative.prediction_confidence = 0.0
+            else:
+                # Insufficient data
+                initiative.predicted_next_month_co2 = 0.0
+                initiative.trend_indicator = 'stable'
+                initiative.top_activity_type = False
+                initiative.prediction_confidence = 0.0
 
     # Constraints
     @api.constrains('start_date', 'end_date')
