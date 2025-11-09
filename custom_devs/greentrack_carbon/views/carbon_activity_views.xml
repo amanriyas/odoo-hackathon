@@ -5,8 +5,9 @@
         <field name="name">carbon.activity.list</field>
         <field name="model">carbon.activity</field>
         <field name="arch" type="xml">
-            <list string="Carbon Activities" decoration-success="co2_saved &gt; 100" decoration-info="co2_saved &gt; 0">
+            <list string="Carbon Activities" decoration-success="co2_saved &gt; 100" decoration-info="co2_saved &gt; 0" decoration-muted="activity_intent == 'emission'">
                 <field name="name"/>
+                <field name="activity_intent" widget="badge" decoration-success="activity_intent == 'reduction'" decoration-info="activity_intent == 'emission'"/>
                 <field name="activity_type" widget="badge"/>
                 <field name="activity_date"/>
                 <field name="quantity"/>
@@ -39,6 +40,7 @@
 
                     <group>
                         <group string="Activity Details">
+                            <field name="activity_intent" widget="radio" options="{'horizontal': true}"/>
                             <field name="activity_date"/>
                             <field name="quantity"/>
                             <field name="unit"/>
@@ -46,8 +48,8 @@
                         <group string="CO2 Impact">
                             <field name="emission_factor" readonly="1"/>
                             <field name="emission_factor_source" widget="badge"/>
-                            <field name="co2_generated" readonly="1"/>
-                            <field name="co2_saved"/>
+                            <field name="co2_generated" readonly="1" invisible="activity_intent == 'reduction'"/>
+                            <field name="co2_saved" readonly="1" invisible="activity_intent == 'emission'"/>
                         </group>
                     </group>
 

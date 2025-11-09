@@ -121,7 +121,12 @@
                 <field name="activity_count"/>
                 <templates>
                     <t t-name="card">
-                        <div class="oe_kanban_card oe_kanban_global_click">
+                        <div class="oe_kanban_card oe_kanban_global_click"
+                        t-attf-style="record.state.raw.value == 'draft' ? 'background-color: #d3e327ff;' 
+                                     : record.state.raw.value == 'active' ? 'background-color: #1991d2ff;' 
+                                     : record.state.raw.value == 'completed' ? 'background-color: #12bb3aff;' 
+                                     : record.state.raw.value == 'cancelled' ? 'background-color: #f8d7da;' 
+                                     : ''">
                             <div class="o_dropdown_kanban dropdown">
                                 <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown" href="#" aria-label="Dropdown menu" title="Dropdown menu">
                                     <span class="fa fa-ellipsis-v"/>

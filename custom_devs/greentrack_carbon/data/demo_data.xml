@@ -96,13 +96,13 @@
     <record id="activity_paper_01" model="carbon.activity">
         <field name="initiative_id" ref="initiative_paperless"/>
         <field name="activity_type">paper</field>
+        <field name="activity_intent">reduction</field>
         <field name="emission_factor_source">static_uae</field>
         <field name="activity_date">2025-01-05</field>
         <field name="quantity">500</field>
         <field name="unit">sheets</field>
         <field name="emission_factor">0.01</field>
         <field name="emission_factor_source">static_uae</field>
-        <field name="co2_saved">5</field>
         <field name="source">manual</field>
         <field name="notes">Switched to digital invoicing system</field>
     </record>
@@ -110,12 +110,12 @@
     <record id="activity_paper_02" model="carbon.activity">
         <field name="initiative_id" ref="initiative_paperless"/>
         <field name="activity_type">paper</field>
+        <field name="activity_intent">reduction</field>
         <field name="emission_factor_source">static_uae</field>
         <field name="activity_date">2025-01-15</field>
         <field name="quantity">800</field>
         <field name="unit">sheets</field>
         <field name="emission_factor">0.01</field>
-        <field name="co2_saved">8</field>
         <field name="source">manual</field>
         <field name="notes">Digital HR onboarding implemented</field>
     </record>
@@ -123,12 +123,12 @@
     <record id="activity_paper_03" model="carbon.activity">
         <field name="initiative_id" ref="initiative_paperless"/>
         <field name="activity_type">paper</field>
+        <field name="activity_intent">reduction</field>
         <field name="emission_factor_source">static_uae</field>
         <field name="activity_date">2025-02-01</field>
         <field name="quantity">1200</field>
         <field name="unit">sheets</field>
         <field name="emission_factor">0.01</field>
-        <field name="co2_saved">12</field>
         <field name="source">manual</field>
         <field name="notes">E-signature platform for contracts</field>
     </record>
@@ -136,12 +136,12 @@
     <record id="activity_paper_04" model="carbon.activity">
         <field name="initiative_id" ref="initiative_paperless"/>
         <field name="activity_type">paper</field>
+        <field name="activity_intent">reduction</field>
         <field name="emission_factor_source">static_uae</field>
         <field name="activity_date">2025-02-20</field>
         <field name="quantity">950</field>
         <field name="unit">sheets</field>
         <field name="emission_factor">0.01</field>
-        <field name="co2_saved">9.5</field>
         <field name="source">manual</field>
         <field name="notes">Digital meeting notes and agendas</field>
     </record>
@@ -149,12 +149,12 @@
     <record id="activity_paper_05" model="carbon.activity">
         <field name="initiative_id" ref="initiative_paperless"/>
         <field name="activity_type">paper</field>
+        <field name="activity_intent">reduction</field>
         <field name="emission_factor_source">static_uae</field>
         <field name="activity_date">2025-03-10</field>
         <field name="quantity">1500</field>
         <field name="unit">sheets</field>
         <field name="emission_factor">0.01</field>
-        <field name="co2_saved">15</field>
         <field name="source">manual</field>
         <field name="notes">Cloud-based document management</field>
     </record>
@@ -163,6 +163,7 @@
     <record id="activity_solar_01" model="carbon.activity">
         <field name="initiative_id" ref="initiative_solar"/>
         <field name="activity_type">electricity</field>
+        <field name="activity_intent">reduction</field>
         <field name="activity_date">2025-02-15</field>
         <field name="quantity">1500</field>
         <field name="unit">kwh</field>
@@ -170,7 +171,6 @@
         <field name="emission_factor_source">api_realtime</field>
         <field name="location_state">du</field>
         <field name="api_estimate_id">est_mock_elec_1234</field>
-        <field name="co2_saved">630</field>
         <field name="source">api</field>
         <field name="notes">First week of solar panel operation - Dubai DEWA Grid</field>
     </record>
@@ -178,6 +178,7 @@
     <record id="activity_solar_02" model="carbon.activity">
         <field name="initiative_id" ref="initiative_solar"/>
         <field name="activity_type">electricity</field>
+        <field name="activity_intent">reduction</field>
         <field name="activity_date">2025-03-01</field>
         <field name="quantity">3200</field>
         <field name="unit">kwh</field>
@@ -185,7 +186,6 @@
         <field name="emission_factor_source">api_realtime</field>
         <field name="location_state">du</field>
         <field name="api_estimate_id">est_mock_elec_5678</field>
-        <field name="co2_saved">1344</field>
         <field name="source">api</field>
         <field name="notes">Full month solar generation - March (Dubai)</field>
     </record>
@@ -193,6 +193,7 @@
     <record id="activity_solar_03" model="carbon.activity">
         <field name="initiative_id" ref="initiative_solar"/>
         <field name="activity_type">electricity</field>
+        <field name="activity_intent">reduction</field>
         <field name="activity_date">2025-04-01</field>
         <field name="quantity">3500</field>
         <field name="unit">kwh</field>
@@ -200,7 +201,6 @@
         <field name="emission_factor_source">api_realtime</field>
         <field name="location_state">du</field>
         <field name="api_estimate_id">est_mock_elec_9012</field>
-        <field name="co2_saved">1470</field>
         <field name="source">api</field>
         <field name="notes">Solar generation - April peak summer (Dubai)</field>
     </record>
@@ -209,6 +209,7 @@
     <record id="activity_transport_01" model="carbon.activity">
         <field name="initiative_id" ref="initiative_transport"/>
         <field name="activity_type">travel</field>
+        <field name="activity_intent">reduction</field>
         <field name="activity_date">2025-01-20</field>
         <field name="quantity">450</field>
         <field name="unit">km</field>
@@ -218,7 +219,6 @@
         <field name="vehicle_model">Land Cruiser</field>
         <field name="vehicle_year">2020</field>
         <field name="api_estimate_id">est_mock_vehicle_3456</field>
-        <field name="co2_saved">126</field>
         <field name="source">manual</field>
         <field name="notes">Carpool week 1 - 3 employees (Toyota Land Cruiser)</field>
     </record>
@@ -226,6 +226,7 @@
     <record id="activity_transport_02" model="carbon.activity">
         <field name="initiative_id" ref="initiative_transport"/>
         <field name="activity_type">travel</field>
+        <field name="activity_intent">reduction</field>
         <field name="activity_date">2025-02-05</field>
         <field name="quantity">820</field>
         <field name="unit">km</field>
@@ -235,7 +236,6 @@
         <field name="vehicle_model">Camry</field>
         <field name="vehicle_year">2021</field>
         <field name="api_estimate_id">est_mock_vehicle_7890</field>
-        <field name="co2_saved">123</field>
         <field name="source">manual</field>
         <field name="notes">Carpool program expanding - 5 groups (Mid-size sedans)</field>
     </record>
@@ -243,6 +243,7 @@
     <record id="activity_transport_03" model="carbon.activity">
         <field name="initiative_id" ref="initiative_transport"/>
         <field name="activity_type">fuel</field>
+        <field name="activity_intent">reduction</field>
         <field name="activity_date">2025-02-15</field>
         <field name="quantity">150</field>
         <field name="unit">liters</field>
@@ -250,7 +251,6 @@
         <field name="emission_factor_source">api_realtime</field>
         <field name="fuel_type">diesel</field>
         <field name="api_estimate_id">est_mock_fuel_2345</field>
-        <field name="co2_saved">402</field>
         <field name="source">manual</field>
         <field name="notes">EV adoption - replaced diesel consumption</field>
     </record>
@@ -258,6 +258,7 @@
     <record id="activity_transport_04" model="carbon.activity">
         <field name="initiative_id" ref="initiative_transport"/>
         <field name="activity_type">travel</field>
+        <field name="activity_intent">reduction</field>
         <field name="activity_date">2025-03-01</field>
         <field name="quantity">1200</field>
         <field name="unit">km</field>
@@ -267,7 +268,6 @@
         <field name="vehicle_model">Civic</field>
         <field name="vehicle_year">2022</field>
         <field name="api_estimate_id">est_mock_vehicle_4567</field>
-        <field name="co2_saved">156</field>
         <field name="source">manual</field>
         <field name="notes">Metro pass program - 10 employees (Honda Civic carpools)</field>
     </record>
@@ -275,6 +275,7 @@
     <record id="activity_transport_05" model="carbon.activity">
         <field name="initiative_id" ref="initiative_transport"/>
         <field name="activity_type">fuel</field>
+        <field name="activity_intent">reduction</field>
         <field name="activity_date">2025-03-15</field>
         <field name="quantity">200</field>
         <field name="unit">liters</field>
@@ -282,7 +283,6 @@
         <field name="emission_factor_source">api_realtime</field>
         <field name="fuel_type">gasoline</field>
         <field name="api_estimate_id">est_mock_fuel_6789</field>
-        <field name="co2_saved">462</field>
         <field name="source">manual</field>
         <field name="notes">Company EV fleet - Month 1 (replaced gasoline)</field>
     </record>
@@ -291,12 +291,12 @@
     <record id="activity_waste_01" model="carbon.activity">
         <field name="initiative_id" ref="initiative_waste"/>
         <field name="activity_type">waste</field>
+        <field name="activity_intent">reduction</field>
         <field name="emission_factor_source">static_uae</field>
         <field name="activity_date">2024-10-15</field>
         <field name="quantity">85</field>
         <field name="unit">kg</field>
         <field name="emission_factor">0.5</field>
-        <field name="co2_saved">42.5</field>
         <field name="source">manual</field>
         <field name="notes">Recycling program launch - Week 1</field>
     </record>
@@ -304,12 +304,12 @@
     <record id="activity_waste_02" model="carbon.activity">
         <field name="initiative_id" ref="initiative_waste"/>
         <field name="activity_type">waste</field>
+        <field name="activity_intent">reduction</field>
         <field name="emission_factor_source">static_uae</field>
         <field name="activity_date">2024-11-01</field>
         <field name="quantity">120</field>
         <field name="unit">kg</field>
         <field name="emission_factor">0.5</field>
-        <field name="co2_saved">60</field>
         <field name="source">manual</field>
         <field name="notes">Composting program - organic waste</field>
     </record>
@@ -317,12 +317,12 @@
     <record id="activity_waste_03" model="carbon.activity">
         <field name="initiative_id" ref="initiative_waste"/>
         <field name="activity_type">waste</field>
+        <field name="activity_intent">reduction</field>
         <field name="emission_factor_source">static_uae</field>
         <field name="activity_date">2024-12-01</field>
         <field name="quantity">150</field>
         <field name="unit">kg</field>
         <field name="emission_factor">0.5</field>
-        <field name="co2_saved">75</field>
         <field name="source">manual</field>
         <field name="notes">Plastic elimination campaign</field>
     </record>
@@ -330,12 +330,12 @@
     <record id="activity_waste_04" model="carbon.activity">
         <field name="initiative_id" ref="initiative_waste"/>
         <field name="activity_type">waste</field>
+        <field name="activity_intent">reduction</field>
         <field name="emission_factor_source">static_uae</field>
         <field name="activity_date">2025-01-15</field>
         <field name="quantity">180</field>
         <field name="unit">kg</field>
         <field name="emission_factor">0.5</field>
-        <field name="co2_saved">90</field>
         <field name="source">manual</field>
         <field name="notes">Q1 2025 - Full recycling adoption</field>
     </record>
@@ -343,12 +343,12 @@
     <record id="activity_waste_05" model="carbon.activity">
         <field name="initiative_id" ref="initiative_waste"/>
         <field name="activity_type">waste</field>
+        <field name="activity_intent">reduction</field>
         <field name="emission_factor_source">static_uae</field>
         <field name="activity_date">2025-02-15</field>
         <field name="quantity">195</field>
         <field name="unit">kg</field>
         <field name="emission_factor">0.5</field>
-        <field name="co2_saved">97.5</field>
         <field name="source">manual</field>
         <field name="notes">Waste audit and optimization</field>
     </record>
@@ -357,12 +357,12 @@
     <record id="activity_water_01" model="carbon.activity">
         <field name="initiative_id" ref="initiative_water"/>
         <field name="activity_type">water</field>
+        <field name="activity_intent">reduction</field>
         <field name="emission_factor_source">static_uae</field>
         <field name="activity_date">2025-03-05</field>
         <field name="quantity">5000</field>
         <field name="unit">liters</field>
         <field name="emission_factor">0.0003</field>
-        <field name="co2_saved">1.5</field>
         <field name="source">api</field>
         <field name="notes">Low-flow fixtures installation - Week 1</field>
     </record>
@@ -370,12 +370,12 @@
     <record id="activity_water_02" model="carbon.activity">
         <field name="initiative_id" ref="initiative_water"/>
         <field name="activity_type">water</field>
+        <field name="activity_intent">reduction</field>
         <field name="emission_factor_source">static_uae</field>
         <field name="activity_date">2025-03-15</field>
         <field name="quantity">8000</field>
         <field name="unit">liters</field>
         <field name="emission_factor">0.0003</field>
-        <field name="co2_saved">2.4</field>
         <field name="source">api</field>
         <field name="notes">Smart meters tracking savings</field>
     </record>
@@ -383,12 +383,12 @@
     <record id="activity_water_03" model="carbon.activity">
         <field name="initiative_id" ref="initiative_water"/>
         <field name="activity_type">water</field>
+        <field name="activity_intent">reduction</field>
         <field name="emission_factor_source">static_uae</field>
         <field name="activity_date">2025-04-01</field>
         <field name="quantity">12000</field>
         <field name="unit">liters</field>
         <field name="emission_factor">0.0003</field>
-        <field name="co2_saved">3.6</field>
         <field name="source">api</field>
         <field name="notes">Rainwater harvesting system active</field>
     </record>
@@ -397,11 +397,11 @@
     <record id="activity_led_01" model="carbon.activity">
         <field name="initiative_id" ref="initiative_green_office"/>
         <field name="activity_type">electricity</field>
+        <field name="activity_intent">reduction</field>
         <field name="activity_date">2024-07-01</field>
         <field name="quantity">2000</field>
         <field name="unit">kwh</field>
         <field name="emission_factor">0.45</field>
-        <field name="co2_saved">900</field>
         <field name="source">manual</field>
         <field name="notes">First floor LED retrofit complete</field>
     </record>
@@ -409,11 +409,11 @@
     <record id="activity_led_02" model="carbon.activity">
         <field name="initiative_id" ref="initiative_green_office"/>
         <field name="activity_type">electricity</field>
+        <field name="activity_intent">reduction</field>
         <field name="activity_date">2024-09-01</field>
         <field name="quantity">1800</field>
         <field name="unit">kwh</field>
         <field name="emission_factor">0.45</field>
-        <field name="co2_saved">810</field>
         <field name="source">manual</field>
         <field name="notes">All floors LED conversion complete</field>
     </record>

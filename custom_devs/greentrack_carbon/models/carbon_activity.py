@@ -54,6 +54,17 @@ class CarbonActivity(models.Model):
         help="Type of carbon-generating or saving activity"
     )
 
+    activity_intent = fields.Selection(
+        selection=[
+            ('emission', 'Carbon Emission (Tracking)'),
+            ('reduction', 'Carbon Reduction (Savings)'),
+        ],
+        string="Activity Intent",
+        required=True,
+        default='reduction',
+        help="Is this tracking regular emissions or carbon reduction initiatives?"
+    )
+
     activity_date = fields.Date(
         string="Activity Date",
         required=True,
@@ -223,24 +234,29 @@ class CarbonActivity(models.Model):
             else:
                 activity.name = "New Activity"
 
-    @api.depends('quantity', 'emission_factor')
+    @api.depends('quantity', 'emission_factor', 'activity_intent')
     def _compute_co2(self):
-        """Calculate CO2 generated based on quantity and emission factor"""
+        """Calculate CO2 generated and saved based on quantity, emission factor, and intent"""
         for activity in self:
             if activity.quantity and activity.emission_factor:
                 activity.co2_generated = round(activity.quantity * activity.emission_factor, 2)
 
-                # If co2_saved is not manually set, use co2_generated as the saved amount
-                # (assuming this is a reduction activity)
-                if not activity.co2_saved:
+                # Only reduction activities save CO2
+                # Emission activities are for tracking regular usage and don't save CO2
+                if activity.activity_intent == 'reduction':
                     activity.co2_saved = activity.co2_generated
+                else:
+                    activity.co2_saved = 0.0
 
                 _logger.info(
-                    f"Activity CO2 calculation: {activity.quantity} × {activity.emission_factor} = "
-                    f"{activity.co2_generated} kg CO2"
+                    f"Activity CO2 calculation ({activity.activity_intent}): "
+                    f"{activity.quantity} × {activity.emission_factor} = "
+                    f"{activity.co2_generated} kg CO2 generated, "
+                    f"{activity.co2_saved} kg CO2 saved"
                 )
             else:
                 activity.co2_generated = 0.0
+                activity.co2_saved = 0.0
 
     # Onchange Methods
     @api.onchange('activity_type')
