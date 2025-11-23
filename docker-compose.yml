@@ -44,7 +44,7 @@ services:
     networks:
       - odoo-network
     restart: unless-stopped
-    command: -- --dev=all -d odoo --db_host=db --db_port=5432 --db_user=odoo --db_password=12345 --addons-path=/mnt/extra-addons,/usr/lib/python3/dist-packages/odoo/addons --init=base,student_management --without-demo=False
+    command: -- --dev=all -d odoo --db_host=db --db_port=5432 --db_user=odoo --db_password=12345 --addons-path=/mnt/extra-addons,/usr/lib/python3/dist-packages/odoo/addons --init=greentrack_carbon --without-demo=False
 
 volumes:
   odoo-db-data:
