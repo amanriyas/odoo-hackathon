@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        
+        <!-- ========================================== -->
+        <!-- CARBON INITIATIVES -->
+        <!-- ========================================== -->
+        
+        <!-- Initiative 1: Energy Efficiency (Active) -->
+        <record id="initiative_energy_efficiency" model="carbon.initiative">
+            <field name="name">UAE Net Zero 2050 - Office Energy Efficiency</field>
+            <field name="description">Comprehensive energy reduction program aligned with UAE Net Zero goals. Includes LED retrofits, smart HVAC optimization, solar panel integration, and energy monitoring systems across all office locations.</field>
+            <field name="category">energy</field>
+            <field name="start_date">2025-01-01</field>
+            <field name="end_date">2025-12-31</field>
+            <field name="target_co2_reduction">8000.0</field>
+            <field name="state">active</field>
+        </record>
+
+        <!-- Initiative 2: Green Transport (Active) -->
+        <record id="initiative_green_transport" model="carbon.initiative">
+            <field name="name">Dubai Green Mobility Initiative</field>
+            <field name="description">Employee transportation program promoting electric vehicles, carpooling, metro usage, and cycling to work. Includes EV charging stations installation and carpool matching app.</field>
+            <field name="category">transport</field>
+            <field name="start_date">2025-02-01</field>
+            <field name="end_date">2025-11-30</field>
+            <field name="target_co2_reduction">5000.0</field>
+            <field name="state">active</field>
+        </record>
+
+        <!-- Initiative 3: Paperless Office (Active) -->
+        <record id="initiative_paperless" model="carbon.initiative">
+            <field name="name">Paperless Digital Transformation 2025</field>
+            <field name="description">Complete digital transformation eliminating paper usage through cloud document management, e-signatures, digital workflows, and mobile-first processes.</field>
+            <field name="category">waste</field>
+            <field name="start_date">2025-01-15</field>
+            <field name="end_date">2025-12-31</field>
+            <field name="target_co2_reduction">1500.0</field>
+            <field name="state">active</field>
+        </record>
+
+        <!-- Initiative 4: Water Conservation (Active) -->
+        <record id="initiative_water_conservation" model="carbon.initiative">
+            <field name="name">Smart Water Management System</field>
+            <field name="description">Water conservation through smart meters, low-flow fixtures, rainwater harvesting, greywater recycling, and leak detection AI systems.</field>
+            <field name="category">water</field>
+            <field name="start_date">2025-03-01</field>
+            <field name="end_date">2025-09-30</field>
+            <field name="target_co2_reduction">600.0</field>
+            <field name="state">active</field>
+        </record>
+
+        <!-- Initiative 5: Zero Waste Program (Active) -->
+        <record id="initiative_zero_waste" model="carbon.initiative">
+            <field name="name">Zero Waste to Landfill Project</field>
+            <field name="description">Comprehensive waste reduction targeting 90% diversion rate through recycling stations, composting programs, plastic elimination, and circular economy practices.</field>
+            <field name="category">waste</field>
+            <field name="start_date">2024-10-01</field>
+            <field name="end_date">2025-12-31</field>
+            <field name="target_co2_reduction">3000.0</field>
+            <field name="state">active</field>
+        </record>
+
+        <!-- Initiative 6: Green Office Design (Completed) -->
+        <record id="initiative_green_office" model="carbon.initiative">
+            <field name="name">LED Lighting Retrofit 2024</field>
+            <field name="description">Complete replacement of traditional lighting with energy-efficient LED systems, motion sensors, and natural light optimization across all facilities.</field>
+            <field name="category">office</field>
+            <field name="start_date">2024-06-01</field>
+            <field name="end_date">2024-12-31</field>
+            <field name="target_co2_reduction">2000.0</field>
+            <field name="state">completed</field>
+        </record>
+
+        <!-- Initiative 7: Future Planning (Draft) -->
+        <record id="initiative_circular_economy" model="carbon.initiative">
+            <field name="name">Circular Economy Pilot Program</field>
+            <field name="description">Exploring circular economy principles for office equipment, furniture, and supplies procurement. Focus on reuse, refurbishment, and recycling partnerships.</field>
+            <field name="category">waste</field>
+            <field name="start_date">2025-07-01</field>
+            <field name="end_date">2025-12-31</field>
+            <field name="target_co2_reduction">1200.0</field>
+            <field name="state">draft</field>
+        </record>
+
+        <!-- ========================================== -->
+        <!-- CARBON ACTIVITIES - ENERGY INITIATIVE -->
+        <!-- ========================================== -->
+
+        <!-- Electricity consumption tracking (emissions) -->
+        <record id="activity_energy_01" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_energy_efficiency"/>
+            <field name="activity_type">electricity</field>
+            <field name="activity_intent">emission</field>
+            <field name="quantity">18000.0</field>
+            <field name="unit">kwh</field>
+            <field name="activity_date">2025-01-15</field>
+            <field name="emission_factor">0.45</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">January office electricity consumption - baseline measurement</field>
+        </record>
+
+        <record id="activity_energy_02" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_energy_efficiency"/>
+            <field name="activity_type">electricity</field>
+            <field name="activity_intent">emission</field>
+            <field name="quantity">16500.0</field>
+            <field name="unit">kwh</field>
+            <field name="activity_date">2025-02-15</field>
+            <field name="emission_factor">0.45</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">February consumption - 8% reduction from LED upgrades</field>
+        </record>
+
+        <record id="activity_energy_03" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_energy_efficiency"/>
+            <field name="activity_type">electricity</field>
+            <field name="activity_intent">emission</field>
+            <field name="quantity">15200.0</field>
+            <field name="unit">kwh</field>
+            <field name="activity_date">2025-03-15</field>
+            <field name="emission_factor">0.45</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">March consumption - HVAC optimization showing results</field>
+        </record>
+
+        <!-- Solar energy generation (reduction) -->
+        <record id="activity_energy_04" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_energy_efficiency"/>
+            <field name="activity_type">electricity</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">2500.0</field>
+            <field name="unit">kwh</field>
+            <field name="activity_date">2025-03-20</field>
+            <field name="emission_factor">0.45</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">Solar panel generation - March (offset grid consumption)</field>
+        </record>
+
+        <record id="activity_energy_05" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_energy_efficiency"/>
+            <field name="activity_type">electricity</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">3200.0</field>
+            <field name="unit">kwh</field>
+            <field name="activity_date">2025-04-20</field>
+            <field name="emission_factor">0.45</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">Solar panel generation - April (peak season)</field>
+        </record>
+
+        <record id="activity_energy_06" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_energy_efficiency"/>
+            <field name="activity_type">electricity</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">3500.0</field>
+            <field name="unit">kwh</field>
+            <field name="activity_date">2025-05-20</field>
+            <field name="emission_factor">0.45</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">Solar panel generation - May (highest output)</field>
+        </record>
+
+        <record id="activity_energy_07" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_energy_efficiency"/>
+            <field name="activity_type">electricity</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">3400.0</field>
+            <field name="unit">kwh</field>
+            <field name="activity_date">2025-06-20</field>
+            <field name="emission_factor">0.45</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">Solar panel generation - June</field>
+        </record>
+
+        <!-- ========================================== -->
+        <!-- CARBON ACTIVITIES - TRANSPORT INITIATIVE -->
+        <!-- ========================================== -->
+
+        <!-- Employee commute tracking (emissions) -->
+        <record id="activity_transport_01" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_green_transport"/>
+            <field name="activity_type">travel</field>
+            <field name="activity_intent">emission</field>
+            <field name="quantity">15000.0</field>
+            <field name="unit">km</field>
+            <field name="activity_date">2025-02-28</field>
+            <field name="emission_factor">0.12</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">February employee commute - petrol vehicles baseline</field>
+        </record>
+
+        <record id="activity_transport_02" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_green_transport"/>
+            <field name="activity_type">travel</field>
+            <field name="activity_intent">emission</field>
+            <field name="quantity">13500.0</field>
+            <field name="unit">km</field>
+            <field name="activity_date">2025-03-31</field>
+            <field name="emission_factor">0.12</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">March commute - carpooling program launched</field>
+        </record>
+
+        <!-- EV fleet usage (reduction) -->
+        <record id="activity_transport_03" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_green_transport"/>
+            <field name="activity_type">travel</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">4500.0</field>
+            <field name="unit">km</field>
+            <field name="activity_date">2025-03-31</field>
+            <field name="emission_factor">0.12</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">EV fleet usage - March (offsetting petrol vehicle km)</field>
+        </record>
+
+        <record id="activity_transport_04" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_green_transport"/>
+            <field name="activity_type">travel</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">5200.0</field>
+            <field name="unit">km</field>
+            <field name="activity_date">2025-04-30</field>
+            <field name="emission_factor">0.12</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">EV fleet usage - April (growing adoption)</field>
+        </record>
+
+        <record id="activity_transport_05" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_green_transport"/>
+            <field name="activity_type">travel</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">6100.0</field>
+            <field name="unit">km</field>
+            <field name="activity_date">2025-05-31</field>
+            <field name="emission_factor">0.12</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">EV fleet usage - May</field>
+        </record>
+
+        <record id="activity_transport_06" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_green_transport"/>
+            <field name="activity_type">travel</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">6800.0</field>
+            <field name="unit">km</field>
+            <field name="activity_date">2025-06-30</field>
+            <field name="emission_factor">0.12</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">EV fleet usage - June (50% EV adoption achieved)</field>
+        </record>
+
+        <!-- Business travel -->
+        <record id="activity_transport_07" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_green_transport"/>
+            <field name="activity_type">fuel</field>
+            <field name="activity_intent">emission</field>
+            <field name="quantity">850.0</field>
+            <field name="unit">liters</field>
+            <field name="activity_date">2025-04-10</field>
+            <field name="emission_factor">2.31</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">Business trips - Abu Dhabi and Al Ain visits</field>
+        </record>
+
+        <!-- ========================================== -->
+        <!-- CARBON ACTIVITIES - PAPERLESS INITIATIVE -->
+        <!-- ========================================== -->
+
+        <record id="activity_paperless_01" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_paperless"/>
+            <field name="activity_type">paper</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">12000.0</field>
+            <field name="unit">sheets</field>
+            <field name="activity_date">2025-02-28</field>
+            <field name="emission_factor">0.01</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">February paper savings - digital signatures implementation</field>
+        </record>
+
+        <record id="activity_paperless_02" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_paperless"/>
+            <field name="activity_type">paper</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">18500.0</field>
+            <field name="unit">sheets</field>
+            <field name="activity_date">2025-03-31</field>
+            <field name="emission_factor">0.01</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">March paper savings - cloud document management rollout</field>
+        </record>
+
+        <record id="activity_paperless_03" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_paperless"/>
+            <field name="activity_type">paper</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">22000.0</field>
+            <field name="unit">sheets</field>
+            <field name="activity_date">2025-04-30</field>
+            <field name="emission_factor">0.01</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">April paper savings - HR forms digitized</field>
+        </record>
+
+        <record id="activity_paperless_04" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_paperless"/>
+            <field name="activity_type">paper</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">25000.0</field>
+            <field name="unit">sheets</field>
+            <field name="activity_date">2025-05-31</field>
+            <field name="emission_factor">0.01</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">May paper savings - Finance department fully digital</field>
+        </record>
+
+        <!-- ========================================== -->
+        <!-- CARBON ACTIVITIES - WATER INITIATIVE -->
+        <!-- ========================================== -->
+
+        <record id="activity_water_01" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_water_conservation"/>
+            <field name="activity_type">water</field>
+            <field name="activity_intent">emission</field>
+            <field name="quantity">45000.0</field>
+            <field name="unit">liters</field>
+            <field name="activity_date">2025-03-31</field>
+            <field name="emission_factor">0.0003</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">March water consumption - baseline after meter installation</field>
+        </record>
+
+        <record id="activity_water_02" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_water_conservation"/>
+            <field name="activity_type">water</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">8500.0</field>
+            <field name="unit">liters</field>
+            <field name="activity_date">2025-04-30</field>
+            <field name="emission_factor">0.0003</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">April water savings - low-flow fixtures installed</field>
+        </record>
+
+        <record id="activity_water_03" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_water_conservation"/>
+            <field name="activity_type">water</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">12000.0</field>
+            <field name="unit">liters</field>
+            <field name="activity_date">2025-05-31</field>
+            <field name="emission_factor">0.0003</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">May water savings - rainwater harvesting system operational</field>
+        </record>
+
+        <record id="activity_water_04" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_water_conservation"/>
+            <field name="activity_type">water</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">15000.0</field>
+            <field name="unit">liters</field>
+            <field name="activity_date">2025-06-30</field>
+            <field name="emission_factor">0.0003</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">June water savings - greywater recycling for landscaping</field>
+        </record>
+
+        <!-- ========================================== -->
+        <!-- CARBON ACTIVITIES - WASTE INITIATIVE -->
+        <!-- ========================================== -->
+
+        <record id="activity_waste_01" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_zero_waste"/>
+            <field name="activity_type">waste</field>
+            <field name="activity_intent">emission</field>
+            <field name="quantity">1200.0</field>
+            <field name="unit">kg</field>
+            <field name="activity_date">2025-01-31</field>
+            <field name="emission_factor">0.5</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">January waste to landfill - baseline measurement</field>
+        </record>
+
+        <record id="activity_waste_02" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_zero_waste"/>
+            <field name="activity_type">waste</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">450.0</field>
+            <field name="unit">kg</field>
+            <field name="activity_date">2025-02-28</field>
+            <field name="emission_factor">0.5</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">February waste diverted - recycling program launched</field>
+        </record>
+
+        <record id="activity_waste_03" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_zero_waste"/>
+            <field name="activity_type">waste</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">680.0</field>
+            <field name="unit">kg</field>
+            <field name="activity_date">2025-03-31</field>
+            <field name="emission_factor">0.5</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">March waste diverted - plastic elimination campaign</field>
+        </record>
+
+        <record id="activity_waste_04" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_zero_waste"/>
+            <field name="activity_type">waste</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">850.0</field>
+            <field name="unit">kg</field>
+            <field name="activity_date">2025-04-30</field>
+            <field name="emission_factor">0.5</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">April waste diverted - composting program started</field>
+        </record>
+
+        <record id="activity_waste_05" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_zero_waste"/>
+            <field name="activity_type">waste</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">920.0</field>
+            <field name="unit">kg</field>
+            <field name="activity_date">2025-05-31</field>
+            <field name="emission_factor">0.5</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">May waste diverted - 70% diversion rate achieved</field>
+        </record>
+
+        <!-- ========================================== -->
+        <!-- CARBON ACTIVITIES - COMPLETED INITIATIVE -->
+        <!-- ========================================== -->
+
+        <record id="activity_led_01" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_green_office"/>
+            <field name="activity_type">electricity</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">4200.0</field>
+            <field name="unit">kwh</field>
+            <field name="activity_date">2024-08-31</field>
+            <field name="emission_factor">0.45</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">LED retrofit phase 1 - main office building</field>
+        </record>
+
+        <record id="activity_led_02" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_green_office"/>
+            <field name="activity_type">electricity</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">3800.0</field>
+            <field name="unit">kwh</field>
+            <field name="activity_date">2024-10-31</field>
+            <field name="emission_factor">0.45</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">LED retrofit phase 2 - warehouse and parking</field>
+        </record>
+
+        <record id="activity_led_03" model="carbon.activity">
+            <field name="initiative_id" ref="initiative_green_office"/>
+            <field name="activity_type">electricity</field>
+            <field name="activity_intent">reduction</field>
+            <field name="quantity">2500.0</field>
+            <field name="unit">kwh</field>
+            <field name="activity_date">2024-12-31</field>
+            <field name="emission_factor">0.45</field>
+            <field name="emission_factor_source">static_uae</field>
+            <field name="notes">LED retrofit phase 3 - motion sensors optimization</field>
+        </record>
+
+        <!-- ========================================== -->
+        <!-- CARBON GOALS -->
+        <!-- ========================================== -->
+
+        <!-- Goal 1: Energy Q2 Target -->
+        <record id="goal_energy_q2" model="carbon.goal">
+            <field name="name">Q2 2025 Energy Reduction - 3000kg CO2</field>
+            <field name="description">Reduce carbon emissions by 3000kg through solar generation and efficiency measures by end of Q2 2025.</field>
+            <field name="target_date">2025-06-30</field>
+            <field name="target_co2_reduction">3000.0</field>
+            <field name="initiative_id" ref="initiative_energy_efficiency"/>
+        </record>
+
+        <!-- Goal 2: Transport EV Milestone -->
+        <record id="goal_transport_ev" model="carbon.goal">
+            <field name="name">Green Mobility - 50 EV Adopters by Q2</field>
+            <field name="description">Achieve 50 employee registrations for company EV charging program representing 3000kg CO2 reduction through EV adoption.</field>
+            <field name="target_date">2025-06-30</field>
+            <field name="target_co2_reduction">3000.0</field>
+            <field name="initiative_id" ref="initiative_green_transport"/>
+        </record>
+
+        <!-- Goal 3: Paperless Achievement -->
+        <record id="goal_paperless_q2" model="carbon.goal">
+            <field name="name">Paperless Office - 50000 Sheets Saved</field>
+            <field name="description">Save 50000 sheets of paper (500kg CO2) through digital transformation by end of Q2 2025.</field>
+            <field name="target_date">2025-06-30</field>
+            <field name="target_co2_reduction">500.0</field>
+            <field name="initiative_id" ref="initiative_paperless"/>
+        </record>
+
+        <!-- Goal 4: Water Q3 Target -->
+        <record id="goal_water_q3" model="carbon.goal">
+            <field name="name">Water Conservation - 30% Reduction by Q3</field>
+            <field name="description">Reduce water consumption by 30000 liters (9kg CO2) through conservation and recycling by end of Q3 2025.</field>
+            <field name="target_date">2025-09-30</field>
+            <field name="target_co2_reduction">9.0</field>
+            <field name="initiative_id" ref="initiative_water_conservation"/>
+        </record>
+
+        <!-- Goal 5: Zero Waste Milestone -->
+        <record id="goal_waste_diversion" model="carbon.goal">
+            <field name="name">Zero Waste - 80% Diversion Rate by Year End</field>
+            <field name="description">Achieve 80% waste diversion rate from landfills (2400kg CO2) through recycling and composting by December 2025.</field>
+            <field name="target_date">2025-12-31</field>
+            <field name="target_co2_reduction">2400.0</field>
+            <field name="initiative_id" ref="initiative_zero_waste"/>
+        </record>
+
+        <!-- Goal 6: Overall Net Zero Target -->
+        <record id="goal_net_zero_annual" model="carbon.goal">
+            <field name="name">Annual Net Zero Target - 15000kg CO2 Reduction</field>
+            <field name="description">Achieve 15000kg total CO2 reduction across all active initiatives by end of 2025, contributing to UAE Net Zero 2050 goals.</field>
+            <field name="target_date">2025-12-31</field>
+            <field name="target_co2_reduction">15000.0</field>
+            <field name="initiative_id" ref="initiative_energy_efficiency"/>
+        </record>
+
+        <!-- Goal 7: Completed Initiative Goal (Achieved) -->
+        <record id="goal_led_complete" model="carbon.goal">
+            <field name="name">LED Retrofit Completion - 2000kg Target</field>
+            <field name="description">Complete LED lighting retrofit across all facilities achieving 2000kg CO2 reduction by end of 2024.</field>
+            <field name="target_date">2024-12-31</field>
+            <field name="target_co2_reduction">2000.0</field>
+            <field name="initiative_id" ref="initiative_green_office"/>
+        </record>
+
+    </data>
+</odoo>
