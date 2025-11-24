@@ -9,20 +9,20 @@ An innovative Odoo-based sustainability platform that empowers UAE organizations
 ## 📸 Screenshots
 
 ### Dashboard - CO2 Savings Trend
-![Carbon Dashboard](./screenshots/dashboard.png)
+![Carbon Dashboard](./custom_devs/greentrack_carbon/public/Screenshot%202025-11-24%20144457.png)
 *Real-time visualization of carbon savings over time with interactive analytics*
 
 ### Activities Management
-![Activities List](./screenshots/activities.png)
+![Activities List](./custom_devs/greentrack_carbon/public/Screenshot%202025-11-24%20144516.png)
 *Track all carbon-generating and carbon-saving activities with detailed metrics*
 
 ### Goals & Achievement Tracking
-![Goals Dashboard](./screenshots/goals.png)
+![Goals Dashboard](./custom_devs/greentrack_carbon/public/Screenshot%202025-11-24%20144544.png)
 *Monitor progress toward sustainability milestones with visual indicators*
 
-### Goal Analytics
-![Goal Analytics](./screenshots/goal-analytics.png)
-*Comprehensive analysis of environmental impact across all initiatives*
+### Odoo Interface
+![Odoo Platform](./custom_devs/greentrack_carbon/public/odoo.png)
+*Built on the powerful Odoo 19 platform for seamless integration and scalability*
 
 ---
 
@@ -398,14 +398,6 @@ git push origin feature/your-feature
 ## 📄 License
 
 This project is licensed under LGPL-3 - see the module manifest for details.
-
----
-
-## 👥 Authors
-
-**GreenTrack Team**
-- GitHub: [@amanriyas](https://github.com/amanriyas)
-- Website: [https://www.greentrack.ae](https://www.greentrack.ae)
 
 ---
 
